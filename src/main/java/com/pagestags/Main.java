@@ -22,10 +22,9 @@ import com.pagestags.cntr.PageListTmplCntr;
 import com.pagestags.cntr.PageSaveFrmCntr;
 import com.pagestags.cntr.PageViewTmplCntr;
 import com.pagestags.db.PagesRepository;
-
-import onl.andres.thinmvc.Application;
-import onl.andres.thinmvc.cntr.BaseController;
-import onl.andres.thinmvc.cntr.StaticController;
+import com.pagestags.thinmvc.Application;
+import com.pagestags.thinmvc.cntr.BaseController;
+import com.pagestags.thinmvc.cntr.StaticController;
 
 public class Main {
 
@@ -58,10 +57,6 @@ public class Main {
 		controllers.put("/login/validate", new LoginValidateFrmCntr(PAGES_LIST));
 
 		controllers.put("/logout", new LogoutRdrcCntr(PAGES_LIST));
-
-		controllers.put("/strapdown/([^/]*)$", new StaticController("file://files/strapdown/{file}"));
-		controllers.put("/strapdown/themes/([^/]*)$", new StaticController("file://files/strapdown/themes/{file}"));
-
 
 		controllers.put("/(favicon\\.ico)", new StaticController("file://files/favicon.ico"));
 

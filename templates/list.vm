@@ -23,5 +23,5 @@ No pages found.
 <a href="/">Main Page</a>#if ($auth) | <a href="/pages/new">New Page</a> | <a href="/logout">Logout</a> #end
 </xmp>
 </body>
-<script src="/strapdown/strapdown.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/arturadib/strapdown@gh-pages/v/0.2/strapdown.min.js"></script>
 </html>

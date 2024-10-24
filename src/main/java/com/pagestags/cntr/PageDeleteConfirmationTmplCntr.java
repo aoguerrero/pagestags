@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import onl.andres.thinmvc.cntr.TemplateController;
+import com.pagestags.thinmvc.cntr.TemplateController;
 
 public class PageDeleteConfirmationTmplCntr extends TemplateController {
 

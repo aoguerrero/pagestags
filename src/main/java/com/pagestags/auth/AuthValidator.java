@@ -4,8 +4,9 @@ import static com.pagestags.Constants.SESSION_ID;
 
 import java.util.Map;
 
+import com.pagestags.thinmvc.utl.HttpUtils;
+
 import io.netty.handler.codec.http.HttpRequest;
-import onl.andres.thinmvc.utl.HttpUtils;
 
 public class AuthValidator {
 

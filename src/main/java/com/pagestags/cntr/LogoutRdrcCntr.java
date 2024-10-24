@@ -1,6 +1,6 @@
 package com.pagestags.cntr;
 
-import onl.andres.thinmvc.cntr.RedirectController;
+import com.pagestags.thinmvc.cntr.RedirectController;
 
 public class LogoutRdrcCntr extends RedirectController {
 

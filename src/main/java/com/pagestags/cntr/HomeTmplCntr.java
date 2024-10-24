@@ -12,9 +12,8 @@ import java.util.Map;
 
 import com.pagestags.auth.AuthValidator;
 import com.pagestags.db.PagesRepository;
-
-import onl.andres.thinmvc.cntr.TemplateController;
-import onl.andres.thinmvc.utl.FileSystemUtils;
+import com.pagestags.thinmvc.cntr.TemplateController;
+import com.pagestags.thinmvc.utl.FileSystemUtils;
 
 public class HomeTmplCntr extends TemplateController {
 

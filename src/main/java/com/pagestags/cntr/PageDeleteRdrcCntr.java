@@ -11,9 +11,8 @@ import java.util.regex.Pattern;
 
 import com.pagestags.auth.AuthValidator;
 import com.pagestags.db.PagesRepository;
-
-import onl.andres.thinmvc.cntr.RedirectController;
-import onl.andres.thinmvc.excp.ServiceException;
+import com.pagestags.thinmvc.cntr.RedirectController;
+import com.pagestags.thinmvc.excp.ServiceException;
 
 public class PageDeleteRdrcCntr extends RedirectController {
 

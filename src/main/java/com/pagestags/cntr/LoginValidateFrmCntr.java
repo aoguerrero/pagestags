@@ -3,8 +3,8 @@ package com.pagestags.cntr;
 import static com.pagestags.Constants.PASSWORD;
 import static com.pagestags.Constants.SESSION_ID;
 
-import onl.andres.thinmvc.cntr.FormController;
-import onl.andres.thinmvc.excp.ServiceException;;
+import com.pagestags.thinmvc.cntr.FormController;
+import com.pagestags.thinmvc.excp.ServiceException;;
 
 public class LoginValidateFrmCntr extends FormController {
 

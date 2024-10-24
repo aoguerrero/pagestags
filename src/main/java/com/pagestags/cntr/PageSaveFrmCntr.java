@@ -13,10 +13,9 @@ import java.util.regex.Pattern;
 import com.pagestags.auth.AuthValidator;
 import com.pagestags.db.PagesRepository;
 import com.pagestags.mdl.Page;
-
-import onl.andres.thinmvc.cntr.FormController;
-import onl.andres.thinmvc.excp.ServiceException;
-import onl.andres.thinmvc.utl.FileSystemUtils;
+import com.pagestags.thinmvc.cntr.FormController;
+import com.pagestags.thinmvc.excp.ServiceException;
+import com.pagestags.thinmvc.utl.FileSystemUtils;
 
 public class PageSaveFrmCntr extends FormController {
 

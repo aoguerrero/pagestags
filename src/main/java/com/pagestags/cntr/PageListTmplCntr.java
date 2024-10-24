@@ -11,8 +11,7 @@ import java.util.regex.Pattern;
 import com.pagestags.auth.AuthValidator;
 import com.pagestags.db.PagesRepository;
 import com.pagestags.mdl.Page;
-
-import onl.andres.thinmvc.cntr.TemplateController;
+import com.pagestags.thinmvc.cntr.TemplateController;
 
 public class PageListTmplCntr extends TemplateController {
 
