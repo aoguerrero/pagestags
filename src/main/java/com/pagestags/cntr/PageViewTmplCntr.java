@@ -11,7 +11,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.pagestags.auth.AuthValidator;
-import com.pagestags.db.PagesRepository;
 import com.pagestags.thinmvc.cntr.TemplateController;
 import com.pagestags.thinmvc.excp.ServiceException;
 import com.pagestags.thinmvc.utl.FileSystemUtils;
@@ -53,9 +52,6 @@ public class PageViewTmplCntr extends TemplateController {
 			data.put("tags", lines[1]);
 			data.put("public", pblic);
 			data.put("auth", AuthValidator.isAuthenticated(request));
-
-			PagesRepository pagesRepo = new PagesRepository();
-			data.put("allTags", pagesRepo.getTags(auth));
 		}
 		return data;
 	}

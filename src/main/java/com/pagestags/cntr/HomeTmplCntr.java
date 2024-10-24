@@ -36,7 +36,8 @@ public class HomeTmplCntr extends TemplateController {
 
 		Map<String, Object> data = new HashMap<>();
 		String contentStr = content.toString();
-		data.put("page_title", "Home");
+		data.put("page_title", "Main Page");
+		data.put("auth", auth);
 		data.put("title", lines[0]);
 		data.put("content", contentStr);
 		data.put("tags", allTags);

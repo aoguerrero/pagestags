@@ -4,9 +4,12 @@
 <title>$title</title>
 </head>
 <body>
-<xmp theme="united" style="display:none;">
+<xmp theme="simplex" style="display:none;">
+
+#if ($auth)<a class="btn btn-secondary" href="/pages/list/">all</a> #end#foreach ($tag in $tags)<a class="btn btn-secondary" href="/pages/list/$tag">$tag</a> #end
+
 $content
-<a href="/pages/list/">all</a> #foreach ($tag in $tags)<a href="/pages/list/$tag">$tag</a> #end
+
 </xmp>
 </body>
 <script src="https://cdn.jsdelivr.net/gh/arturadib/strapdown@gh-pages/v/0.2/strapdown.min.js"></script>
