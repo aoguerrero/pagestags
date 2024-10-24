@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Delete confirmation</title>
+</head>
+<body>
+<p>Are you sure?</p>
+<a href="/pages/$id/delete">Yes</a> | <a href="/pages/$id/view">No</a>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>$page_title</title>
+</head>
+<body>
+<xmp theme="united" style="display:none;">
+#if ($selectedTags != "")
+**Selected tags:** $selectedTagsDisplay <a href="/pages/list/">[clear]</a>
+#end
+
+**Available tags:** #foreach ($tag in $tags)<a href="/pages/list/${selectedTags}#if ($selectedTags != "")-#end${tag}">$tag</a> #end
+
+#if ($items.size() > 0)
+#foreach ($item in $items)
+- <a href="/pages/$item.id/view">$item.title</a>  
+#foreach ($tag in $item.tags)*$tag* #end#if(!$item.pblic)private#end
+#end
+#else
+No pages found.
+#end
+
+<a href="/">Main Page</a>#if ($auth) | <a href="/pages/new">New Page</a> | <a href="/logout">Logout</a> #end
+</xmp>
+</body>
+<script src="/strapdown/strapdown.js"></script>
+</html>

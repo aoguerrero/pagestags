@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>$title</title>
+</head>
+<body>
+<xmp theme="united" style="display:none;">
+
+**Tags** $tags
+
+$content
+
+#if ($auth)
+**Visibility** #if ($public)Public#{else}Private#end
+
+<a href="/pages/$id/edit">Edit</a> | <a href="/pages/$id/delete/confirmation">Delete</a>
+#end
+
+**Back to ** <a href="/pages/list/">all</a> #foreach ($tag in $allTags)<a href="/pages/list/$tag">$tag</a> #end
+
+</xmp>
+</body>
+<script src="/strapdown/strapdown.js"></script>
+</html>

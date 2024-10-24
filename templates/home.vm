@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>$title</title>
+</head>
+<body>
+<xmp theme="united" style="display:none;">
+$content
+<a href="/pages/list/">all</a> #foreach ($tag in $tags)<a href="/pages/list/$tag">$tag</a> #end
+</xmp>
+</body>
+<script src="/strapdown/strapdown.js"></script>
+</html>
