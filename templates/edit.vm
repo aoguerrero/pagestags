@@ -4,7 +4,7 @@
 <title>$title</title>
 </head>
 <body>
-<form autocomplete="off" action="/pages/$id/save" method="post">
+<form autocomplete="off" action="$base_path/pages/$id/save" method="post">
 <p>Title<br/>
 <input type="text" name="title" size="80" value="$title" required>
 </p>
@@ -20,7 +20,7 @@
 </p>
 <p>
 <input type="submit" value="Save">
-<a href="/pages/${id}/view">Cancel</a>
+<a href="$base_path/pages/${id}/view">Cancel</a>
 </p>
 </form>
 </body>

@@ -26,7 +26,7 @@ public class PageListTmplCntr extends TemplateController {
 		boolean auth = AuthValidator.isAuthenticated(request);
 
 		List<String> selectedTags;
-		Matcher matcher = Pattern.compile("/pages/list/(.+)").matcher(request.uri());
+		Matcher matcher = Pattern.compile(basePath + "/pages/list/(.+)").matcher(request.uri());
 
 		boolean filtered = matcher.find();
 		if (filtered) {
@@ -46,12 +46,13 @@ public class PageListTmplCntr extends TemplateController {
 
 		Map<String, Object> data = new HashMap<>();
 		data.put("page_title", "List Pages");
+		data.put("base_path", basePath);
 		data.put("auth", auth);
-		data.put("selectedTagsStr", String.join("$", selectedTags));
-		data.put("selectedTags", selectedTags);
+		data.put("selected_tags_str", String.join("$", selectedTags));
+		data.put("selected_tags", selectedTags);
 		data.put("tags", allTags);
 		data.put("items", pages);
-		data.put("TemplateUtil", TemplateUtil.class);
+		data.put("template_util", TemplateUtil.class);
 		data.put("filtered", filtered);
 
 		return data;

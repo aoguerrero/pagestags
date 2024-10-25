@@ -14,7 +14,7 @@ $content
 **Visibility** #if ($public)Public#{else}Private#end
 #end
 
-<a href="#" onclick="history.back()">Back</a>#if ($auth)<a href="/pages/$id/edit"> | Edit</a> | <a href="/pages/$id/delete/confirmation">Delete</a>#end
+<a href="$base_path/pages/list/$tags_url">Back</a>#if ($auth)<a href="$base_path/pages/$id/edit"> | Edit</a> | <a href="$base_path/pages/$id/delete/confirmation">Delete</a>#end
 
 
 </xmp>

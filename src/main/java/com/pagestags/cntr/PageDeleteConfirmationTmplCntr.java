@@ -21,6 +21,7 @@ public class PageDeleteConfirmationTmplCntr extends TemplateController {
 		if (matcher.find()) {
 			data.put("id", matcher.group(1));
 		}
+		data.put("base_path", basePath);
 		return data;
 	}
 

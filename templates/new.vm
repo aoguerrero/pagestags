@@ -4,7 +4,7 @@
 <title>New Page</title>
 </head>
 <body>
-<form autocomplete="off" action="/pages/save" method="post">
+<form autocomplete="off" action="$base_path/pages/save" method="post">
 <p>Title<br/>
 <input type="text" name="title" size="80" required>
 </p>
@@ -12,7 +12,7 @@
 <textarea name="content" cols="80" rows="25" spellcheck="false" required></textarea>
 </p>
 <p>Tags<br/>
-<input type="text" name="tags" size="80" required>
+<input type="text" name="tags" size="80" value="$selected_tags_str_sp" required>
 </p>
 <p>
 <input type="checkbox" name="public" value="true" >
@@ -20,7 +20,7 @@
 </p>
 <p>
 <input type="submit" value="Save">
-<a href="/pages/list">Cancel</a>
+<a href="$base_path/pages/list/$selected_tags_str">Cancel</a>
 </p>
 </form>
 </body>

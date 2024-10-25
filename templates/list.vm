@@ -7,12 +7,12 @@
 <xmp theme="simplex" style="display:none;">
 
 #set ( $d = "$")
-#foreach ($selectedTag in $selectedTags)<a class="btn btn-primary" href="/pages/list/${TemplateUtil.removeTagFromList($selectedTagsStr, $selectedTag)}">$selectedTag</a> #end
-#foreach ($tag in $tags)<a class="btn btn-secondary" href="/pages/list/${selectedTagsStr}#if (!$selectedTags.isEmpty())$d#end${tag}">$tag</a> #end
+#foreach ($selected_tag in $selected_tags)<a class="btn btn-primary" href="$base_path/pages/list/${template_util.removeTagFromList($selected_tags_str, $selected_tag)}">$selected_tag</a> #end
+#foreach ($tag in $tags)<a class="btn btn-secondary" href="$base_path/pages/list/${selected_tags_str}#if (!$selected_tags.isEmpty())$d#end${tag}">$tag</a> #end
 
 
 #foreach ($item in $items)
-- <a href="/pages/$item.id/view">$item.title</a>  
+- <a href="$base_path/pages/$item.id/view">$item.title</a>  
 #foreach ($tag in $item.tags)*$tag* #end#if(!$item.pblic)private#end
 
 
@@ -21,7 +21,7 @@
 Select a category from the top.
 #end
 
-<a href="/">Main Page</a>#if ($auth)<a href="/pages/new"> | New Page</a> | <a href="/logout">Logout</a> #end
+<a href="$base_path/">Main Page</a>#if ($auth) | <a href="$base_path/pages/new/$selected_tags_str">New Page</a> | <a href="$base_path/logout">Logout</a> #end
 
 </xmp>
 </body>

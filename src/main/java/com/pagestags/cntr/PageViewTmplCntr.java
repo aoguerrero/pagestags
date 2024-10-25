@@ -46,10 +46,11 @@ public class PageViewTmplCntr extends TemplateController {
 
 			data.put("page_title", action.equals("view") ? "View Page" : "Edit Page");
 			data.put("content", content.toString());
-
+			data.put("base_path", basePath);
 			data.put("id", id);
 			data.put("title", lines[0]);
 			data.put("tags", lines[1]);
+			data.put("tags_url", lines[1].trim().replace(" ", "$"));
 			data.put("public", pblic);
 			data.put("auth", AuthValidator.isAuthenticated(request));
 		}

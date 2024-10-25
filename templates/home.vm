@@ -6,7 +6,7 @@
 <body>
 <xmp theme="simplex" style="display:none;">
 
-#if ($auth)<a class="btn btn-secondary" href="/pages/list/">all</a> #end#foreach ($tag in $tags)<a class="btn btn-secondary" href="/pages/list/$tag">$tag</a> #end
+#if ($auth)<a class="btn btn-secondary" href="$base_path/pages/list/">all</a> #end#foreach ($tag in $tags)<a class="btn btn-secondary" href="$base_path/pages/list/$tag">$tag</a> #end
 
 $content
 
