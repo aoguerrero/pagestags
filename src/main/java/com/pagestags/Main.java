@@ -3,7 +3,6 @@ package com.pagestags;
 import static com.pagestags.Constants.PAGES_PATH;
 import static com.pagestags.Constants.PASSWORD;
 import static com.pagestags.Constants.SESSION_ID;
-import static com.pagestags.thinmvc.Constants.BASE_PATH;
 
 import java.security.SecureRandom;
 import java.util.Base64;
@@ -51,29 +50,25 @@ public class Main {
 
 		Map<String, BaseController> controllers = new HashMap<>();
 
-		final String BASE_PATH_VALUE = System.getProperty(BASE_PATH, "");
-
-		final String PAGES_LIST = "/pages/list";
-
 		controllers.put("/", new HomeTmplCntr("file://templates/home.vm"));
 
 		controllers.put("/login", new LoginTmplCntr("file://templates/login.vm"));
 
-		controllers.put("/login/validate", new LoginValidateFrmCntr(BASE_PATH_VALUE + PAGES_LIST));
+		controllers.put("/login/validate", new LoginValidateFrmCntr("/pages/list"));
 
-		controllers.put("/logout", new LogoutRdrcCntr(BASE_PATH_VALUE + PAGES_LIST));
+		controllers.put("/logout", new LogoutRdrcCntr("/pages/list"));
 
 		controllers.put("/(favicon\\.ico)", new StaticController("file://files/favicon.ico"));
 
 		PageListTmplCntr pageListTmplCntr = new PageListTmplCntr("file://templates/list.vm");
-		controllers.put(PAGES_LIST, pageListTmplCntr);
-		controllers.put(PAGES_LIST + "/(.*)", pageListTmplCntr);
+		controllers.put("/pages/list", pageListTmplCntr);
+		controllers.put("/pages/list/(.*)", pageListTmplCntr);
 
 		controllers.put("/pages/(.*)/view", new PageViewTmplCntr("file://templates/view.vm"));
 
 		controllers.put("/pages/new/(.*)", new PageNewTmplCntr("file://templates/new.vm"));
 
-		PageSaveFrmCntr pageSaveFrmCntr = new PageSaveFrmCntr(BASE_PATH_VALUE + "/pages/{id}/view");
+		PageSaveFrmCntr pageSaveFrmCntr = new PageSaveFrmCntr("/pages/{id}/view");
 		controllers.put("/pages/save", pageSaveFrmCntr);
 		controllers.put("/pages/(.*)/save", pageSaveFrmCntr);
 
@@ -81,7 +76,7 @@ public class Main {
 
 		controllers.put("/pages/(.*)/delete/confirmation",
 				new PageDeleteConfirmationTmplCntr("file://templates/delete_confirmation.vm"));
-		controllers.put("/pages/(.*)/delete", new PageDeleteRdrcCntr(BASE_PATH_VALUE + PAGES_LIST));
+		controllers.put("/pages/(.*)/delete", new PageDeleteRdrcCntr("/pages/list"));
 
 		Application.start(controllers);
 	}
