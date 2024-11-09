@@ -7,8 +7,14 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.commonmark.Extension;
+import org.commonmark.ext.autolink.AutolinkExtension;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
 
 import com.pagestags.auth.AuthValidator;
 import com.pagestags.thinmvc.cntr.TemplateController;
@@ -17,8 +23,14 @@ import com.pagestags.thinmvc.utl.FileSystemUtils;
 
 public class PageViewTmplCntr extends TemplateController {
 
+	private HtmlRenderer renderer;
+	private Parser parser;
+
 	public PageViewTmplCntr(String path) {
 		super(path);
+		Set<Extension> EXTENSIONS = Set.of(AutolinkExtension.create());
+		this.parser = Parser.builder().extensions(EXTENSIONS).build();
+		this.renderer = HtmlRenderer.builder().build();
 	}
 
 	@Override
@@ -32,7 +44,9 @@ public class PageViewTmplCntr extends TemplateController {
 			Path path = Paths.get(System.getProperty(PAGES_PATH), id).toAbsolutePath();
 			String[] lines = (new String(FileSystemUtils.getFileContent(path), StandardCharsets.UTF_8)).split("\\R");
 			boolean pblic = lines[2].equals("public");
-			if (!pblic || action.equals("edit")) {
+			boolean edit = action.equals("edit");
+
+			if (!pblic || edit) {
 				if (!auth) {
 					throw new ServiceException.Unauthorized();
 				}
@@ -43,9 +57,14 @@ public class PageViewTmplCntr extends TemplateController {
 					content.append(lines[i]).append("\n");
 				}
 			}
-
+			String contentStr;
+			if (!edit) {
+				contentStr = renderer.render(parser.parse(content.toString()));
+			} else {
+				contentStr = content.toString();
+			}
 			data.put("page_title", action.equals("view") ? "View Page" : "Edit Page");
-			data.put("content", content.toString());
+			data.put("content", contentStr);
 			data.put("base_path", basePath);
 			data.put("id", id);
 			data.put("title", lines[0]);

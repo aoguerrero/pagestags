@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Delete confirmation</title>
-</head>
+#parse ( "${current_path}/head_tag.vm" )
 <body>
 <p>Are you sure?</p>
-<a href="$base_path/pages/$id/delete">Yes</a> | <a href="$base_path/pages/$id/view">No</a>
+<a class="btn" href="$base_path/pages/$id/delete">Yes</a> <a class="btn" href="$base_path/pages/$id/view">No</a>
 </body>
 </html>

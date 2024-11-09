@@ -57,6 +57,8 @@ public class Main {
 		controllers.put("/login/validate", new LoginValidateFrmCntr("/pages/list"));
 
 		controllers.put("/logout", new LogoutRdrcCntr("/pages/list"));
+		
+		controllers.put("/files/(.*)", new StaticController("file://files/{file}"));
 
 		controllers.put("/(favicon\\.ico)", new StaticController("file://files/favicon.ico"));
 

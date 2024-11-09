@@ -9,6 +9,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
+import org.commonmark.Extension;
+import org.commonmark.ext.autolink.AutolinkExtension;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
 
 import com.pagestags.auth.AuthValidator;
 import com.pagestags.db.PagesRepository;
@@ -17,8 +23,14 @@ import com.pagestags.thinmvc.utl.FileSystemUtils;
 
 public class HomeTmplCntr extends TemplateController {
 
+	private HtmlRenderer renderer;
+	private Parser parser;
+
 	public HomeTmplCntr(String path) {
 		super(path);
+		Set<Extension> EXTENSIONS = Set.of(AutolinkExtension.create());
+		this.parser = Parser.builder().extensions(EXTENSIONS).build();
+		this.renderer = HtmlRenderer.builder().build();
 	}
 
 	public Map<String, Object> getContext() {
@@ -35,12 +47,11 @@ public class HomeTmplCntr extends TemplateController {
 		List<String> allTags = new ArrayList<>(pagesRepo.getTags(auth));
 
 		Map<String, Object> data = new HashMap<>();
-		String contentStr = content.toString();
 		data.put("page_title", "Main Page");
 		data.put("base_path", basePath);
 		data.put("auth", auth);
 		data.put("title", lines[0]);
-		data.put("content", contentStr);
+		data.put("content", renderer.render(parser.parse(content.toString())));
 		data.put("tags", allTags);
 		return data;
 	}

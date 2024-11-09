@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>$title</title>
-</head>
+#parse ( "${current_path}/head_tag.vm" )
 <body>
-<xmp theme="simplex" style="display:none;">
-
-**Tags** $tags
-
+<h1>${title}</h1>
 $content
-
+<p><strong>Tags</strong> $tags</p>
 #if ($auth)
-**Visibility** #if ($public)Public#{else}Private#end
+<p><strong>Visibility</strong> #if ($public)Public#{else}Private#end</p>
 #end
-
-<a href="$base_path/pages/list/$tags_url">Back</a>#if ($auth)<a href="$base_path/pages/$id/edit"> | Edit</a> | <a href="$base_path/pages/$id/delete/confirmation">Delete</a>#end
-
-
-</xmp>
+<p>
+<a class="btn" href="$base_path/pages/list/$tags_url">Back</a>
+#if ($auth)<a class="btn" href="$base_path/pages/$id/edit">Edit</a>
+<a class="btn" href="$base_path/pages/$id/delete/confirmation">Delete</a>#end
+</p>
 </body>
-<script src="https://cdn.jsdelivr.net/gh/arturadib/strapdown@gh-pages/v/0.2/strapdown.min.js"></script>
 </html>

@@ -1,16 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>$title</title>
-</head>
+#parse ( "${current_path}/head_tag.vm" )
 <body>
-<xmp theme="simplex" style="display:none;">
-
-#if ($auth)<a class="btn btn-secondary" href="$base_path/pages/list/">all</a> #end#foreach ($tag in $tags)<a class="btn btn-secondary" href="$base_path/pages/list/$tag">$tag</a> #end
-
+#if ($auth)<a class="tag" href="$base_path/pages/list/">all</a>#end
+#foreach ($tag in $tags)
+<a class="tag" href="$base_path/pages/list/$tag">$tag</a>
+#end
 $content
-
-</xmp>
 </body>
-<script src="https://cdn.jsdelivr.net/gh/arturadib/strapdown@gh-pages/v/0.2/strapdown.min.js"></script>
 </html>

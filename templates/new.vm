@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>New Page</title>
-</head>
+#parse ( "${current_path}/head_tag.vm" )
 <body>
 <form autocomplete="off" action="$base_path/pages/save" method="post">
 <p>Title<br/>
@@ -19,8 +17,8 @@
 <label for="public">Public</label>
 </p>
 <p>
-<input type="submit" value="Save">
-<a href="$base_path/pages/list/$selected_tags_str">Cancel</a>
+<input class="btn" type="submit" value="Save">
+<a class="btn" href="$base_path/pages/list/$selected_tags_str">Cancel</a>
 </p>
 </form>
 </body>
