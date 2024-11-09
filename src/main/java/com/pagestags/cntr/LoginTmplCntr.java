@@ -14,6 +14,7 @@ public class LoginTmplCntr extends TemplateController {
 	public Map<String, Object> getContext() {
 
 		Map<String, Object> data = new HashMap<>();
+		data.put("page_title", "Login");
 		data.put("base_path", basePath);
 
 		return data;

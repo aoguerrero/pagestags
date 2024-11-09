@@ -13,6 +13,8 @@ import java.util.regex.Pattern;
 
 import org.commonmark.Extension;
 import org.commonmark.ext.autolink.AutolinkExtension;
+import org.commonmark.ext.gfm.tables.TablesExtension;
+import org.commonmark.ext.image.attributes.ImageAttributesExtension;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
 
@@ -28,7 +30,8 @@ public class PageViewTmplCntr extends TemplateController {
 
 	public PageViewTmplCntr(String path) {
 		super(path);
-		Set<Extension> EXTENSIONS = Set.of(AutolinkExtension.create());
+		Set<Extension> EXTENSIONS = Set.of(AutolinkExtension.create(), TablesExtension.create(),
+				ImageAttributesExtension.create());
 		this.parser = Parser.builder().extensions(EXTENSIONS).build();
 		this.renderer = HtmlRenderer.builder().build();
 	}

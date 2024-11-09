@@ -25,6 +25,7 @@ public class PageNewTmplCntr extends TemplateController {
 		}
 
 		Map<String, Object> data = new HashMap<>();
+		data.put("page_title", "New Page");
 		data.put("base_path", basePath);
 		data.put("selected_tags_str", selectedTagsStr);
 		data.put("selected_tags_str_sp", selectedTagsStrSp);

@@ -33,6 +33,14 @@ textarea {
     white-space: pre;
     overflow-wrap: normal;
     overflow-x: scroll;
+    font-size: 1em;
+    font-family: monospace;
+}
+
+input[type=text],
+input[type=password] {
+    font-size: 1em;
+    font-family: monospace;
 }
 
 input[type=button],
