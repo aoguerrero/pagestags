@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse ( "${current_path}/head_tag.vm" )
+<body>
+<p>Are you sure?</p>
+<a class="btn" href="$base_path/pages/$id/delete">Yes</a> <a class="btn" href="$base_path/pages/$id/view">No</a>
+</body>
+</html>

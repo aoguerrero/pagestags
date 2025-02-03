@@ -1,0 +1,83 @@
+body {
+    background: White;
+    color: Black;
+    font-family: sans-serif;
+    font-size: 1.2em;
+    max-width: 90%;
+    margin: 20px auto 20px auto;
+}
+
+@media (min-width:800px) {
+    body {
+        max-width: 70%;
+    }
+}
+
+li {
+    margin: 1em 0 1em 0;
+}
+
+.code {
+    font-family: monospace;
+    background: White;
+    color: Black;
+}
+
+pre {
+    white-space: pre-wrap;
+    padding: 1em;
+    background: Aqua;
+}
+
+textarea {
+    white-space: pre;
+    overflow-wrap: normal;
+    overflow-x: scroll;
+    font-size: 1em;
+    font-family: monospace;
+}
+
+input[type=text],
+input[type=password] {
+    font-size: 1em;
+    font-family: monospace;
+}
+
+input[type=button],
+input[type=submit],
+input[type=reset] {
+    border: none;
+    font-family: sans-serif;
+    font-size: 1em;
+}
+
+.btn {
+    background-color: Silver;
+    color: black;
+    padding: 0.25em 1em;
+    margin: 0.25em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.tag {
+    background-color: White;
+    border: 1px solid Grey;
+    color: Grey;
+    padding: 0.25em 1em;
+    margin: 0.25em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.tag-a {
+    background-color: Navy;
+    color: white;
+    padding: 0.25em 1em;
+    margin: 0.25em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse ( "${current_path}/head_tag.vm" )
+<body>
+<form autocomplete="off" action="login/validate" method="post">
+<p>Password</p>
+<p><input type="password" name="password" size="20" required></p>
+<input class="btn" type="submit" value="Send">
+</form>
+</body>
+</html>

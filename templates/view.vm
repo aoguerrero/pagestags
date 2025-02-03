@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse ( "${current_path}/head_tag.vm" )
+<body>
+<h1>${title}</h1>
+$content
+<p><strong>Tags</strong> $tags</p>
+#if ($auth)
+<p><strong>Visibility</strong> #if ($public)Public#{else}Private#end</p>
+#end
+<p>
+<a class="btn" href="$base_path/pages/list/$tags_url">Back</a>
+#if ($auth)<a class="btn" href="$base_path/pages/$id/edit">Edit</a>
+<a class="btn" href="$base_path/pages/$id/delete/confirmation">Delete</a>#end
+</p>
+</body>
+</html>
