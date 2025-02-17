@@ -1,13 +1,13 @@
-package com.pagestags;
+package onl.andres.pt;
 
-public enum PagestagsParameters {
+public enum PTParameters {
 
 	PAGES_PATH("pages_path", "pages"), SESSION_ID("session_id", null), PASSWORD("password", "secret");
 
 	private final String name;
 	private final String defaultValue;
 
-	private PagestagsParameters(String name, String defaultValue) {
+	private PTParameters(String name, String defaultValue) {
 		this.name = name;
 		this.defaultValue = defaultValue;
 	}

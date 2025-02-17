@@ -2,7 +2,7 @@
 <html lang="en">
 #parse ( "${current_path}/head_tag.vm" )
 <body>
-<form autocomplete="off" action="$base_path/pages/save" method="post">
+<form autocomplete="off" action="/pages/save" method="post">
 <p>Title<br/>
 <input type="text" name="title" size="80" required>
 </p>
@@ -18,7 +18,7 @@
 </p>
 <p>
 <input class="btn" type="submit" value="Save">
-<a class="btn" href="$base_path/pages/list/$selected_tags_str">Cancel</a>
+<a class="btn" href="/pages/list/$selected_tags_str">Cancel</a>
 </p>
 </form>
 </body>

@@ -1,12 +1,11 @@
-package com.pagestags.auth;
+package onl.andres.pt.auth;
 
-import static com.pagestags.PagestagsParameters.SESSION_ID;
+import static onl.andres.pt.PTParameters.SESSION_ID;
 
 import java.util.Map;
 
-import com.pagestags.thinmvc.utl.HttpUtils;
-
 import io.netty.handler.codec.http.HttpRequest;
+import onl.andres.thinmvc.utl.HttpUtils;
 
 public class AuthValidator {
 

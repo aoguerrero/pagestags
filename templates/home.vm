@@ -2,9 +2,9 @@
 <html lang="en">
 #parse ( "${current_path}/head_tag.vm" )
 <body>
-#if ($auth)<a class="tag" href="$base_path/pages/list/">all</a>#end
+#if ($auth)<a class="tag" href="/pages/list/">all</a>#end
 #foreach ($tag in $tags)
-<a class="tag" href="$base_path/pages/list/$tag">$tag</a>
+<a class="tag" href="/pages/list/$tag">$tag</a>
 #end
 $content
 </body>

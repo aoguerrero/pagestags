@@ -1,6 +1,6 @@
-package com.pagestags.cntr;
+package onl.andres.pt.cntr;
 
-import static com.pagestags.PagestagsParameters.PAGES_PATH;
+import static onl.andres.pt.PTParameters.PAGES_PATH;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,10 +9,11 @@ import java.nio.file.Paths;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.pagestags.auth.AuthValidator;
-import com.pagestags.db.PagesRepository;
-import com.pagestags.thinmvc.cntr.RedirectController;
-import com.pagestags.thinmvc.excp.ServiceException;
+import io.netty.handler.codec.http.HttpRequest;
+import onl.andres.pt.auth.AuthValidator;
+import onl.andres.pt.db.PagesRepository;
+import onl.andres.thinmvc.cntr.RedirectController;
+import onl.andres.thinmvc.excp.ServiceException;
 
 public class PageDeleteRdrcCntr extends RedirectController {
 
@@ -22,11 +23,11 @@ public class PageDeleteRdrcCntr extends RedirectController {
 	}
 
 	@Override
-	public String execute() {
-		if(!AuthValidator.isAuthenticated(getRequest())) {
+	public String execute(HttpRequest request) {
+		if (!AuthValidator.isAuthenticated(request)) {
 			throw new ServiceException.Unauthorized();
 		}
-		Matcher matcher = Pattern.compile("/pages/(.*)/delete").matcher(this.getRequest().uri());
+		Matcher matcher = Pattern.compile("/pages/(.*)/delete").matcher(request.uri());
 		if (matcher.find()) {
 			try {
 				String id = matcher.group(1);

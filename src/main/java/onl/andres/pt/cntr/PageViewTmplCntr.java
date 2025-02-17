@@ -1,7 +1,6 @@
-package com.pagestags.cntr;
+package onl.andres.pt.cntr;
 
-import static com.pagestags.PagestagsParameters.PAGES_PATH;
-import static com.pagestags.thinmvc.ThinmvcParameters.BASE_PATH;
+import static onl.andres.pt.PTParameters.PAGES_PATH;
 
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
@@ -19,10 +18,11 @@ import org.commonmark.ext.image.attributes.ImageAttributesExtension;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
 
-import com.pagestags.auth.AuthValidator;
-import com.pagestags.thinmvc.cntr.TemplateController;
-import com.pagestags.thinmvc.excp.ServiceException;
-import com.pagestags.thinmvc.utl.FileSystemUtils;
+import io.netty.handler.codec.http.HttpRequest;
+import onl.andres.pt.auth.AuthValidator;
+import onl.andres.thinmvc.cntr.TemplateController;
+import onl.andres.thinmvc.excp.ServiceException;
+import onl.andres.thinmvc.utl.FileSystemUtils;
 
 public class PageViewTmplCntr extends TemplateController {
 
@@ -38,9 +38,9 @@ public class PageViewTmplCntr extends TemplateController {
 	}
 
 	@Override
-	public Map<String, Object> getContext() {
+	public Map<String, Object> getContext(HttpRequest request) {
 		Map<String, Object> data = new HashMap<>();
-		Matcher matcher = Pattern.compile(BASE_PATH.get() + "/pages/(.*)/(view|edit)").matcher(request.uri());
+		Matcher matcher = Pattern.compile("/pages/(.*)/(view|edit)").matcher(request.uri());
 		boolean auth = AuthValidator.isAuthenticated(request);
 		if (matcher.find()) {
 			String id = matcher.group(1);

@@ -1,8 +1,8 @@
-package com.pagestags;
+package onl.andres.pt;
 
-import static com.pagestags.PagestagsParameters.PAGES_PATH;
-import static com.pagestags.PagestagsParameters.PASSWORD;
-import static com.pagestags.PagestagsParameters.SESSION_ID;
+import static onl.andres.pt.PTParameters.PAGES_PATH;
+import static onl.andres.pt.PTParameters.PASSWORD;
+import static onl.andres.pt.PTParameters.SESSION_ID;
 
 import java.security.SecureRandom;
 import java.util.Base64;
@@ -13,20 +13,20 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.pagestags.cntr.HomeTmplCntr;
-import com.pagestags.cntr.LoginTmplCntr;
-import com.pagestags.cntr.LoginValidateFrmCntr;
-import com.pagestags.cntr.LogoutRdrcCntr;
-import com.pagestags.cntr.PageDeleteConfirmationTmplCntr;
-import com.pagestags.cntr.PageDeleteRdrcCntr;
-import com.pagestags.cntr.PageListTmplCntr;
-import com.pagestags.cntr.PageNewTmplCntr;
-import com.pagestags.cntr.PageSaveFrmCntr;
-import com.pagestags.cntr.PageViewTmplCntr;
-import com.pagestags.db.PagesRepository;
-import com.pagestags.thinmvc.Application;
-import com.pagestags.thinmvc.cntr.BaseController;
-import com.pagestags.thinmvc.cntr.StaticController;
+import onl.andres.pt.cntr.HomeTmplCntr;
+import onl.andres.pt.cntr.LoginTmplCntr;
+import onl.andres.pt.cntr.LoginValidateFrmCntr;
+import onl.andres.pt.cntr.LogoutRdrcCntr;
+import onl.andres.pt.cntr.PageDeleteConfirmationTmplCntr;
+import onl.andres.pt.cntr.PageDeleteRdrcCntr;
+import onl.andres.pt.cntr.PageListTmplCntr;
+import onl.andres.pt.cntr.PageNewTmplCntr;
+import onl.andres.pt.cntr.PageSaveFrmCntr;
+import onl.andres.pt.cntr.PageViewTmplCntr;
+import onl.andres.pt.db.PagesRepository;
+import onl.andres.thinmvc.Application;
+import onl.andres.thinmvc.cntr.BaseController;
+import onl.andres.thinmvc.cntr.StaticController;
 
 public class Main {
 
@@ -35,7 +35,6 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 
 		logger.info("Accepted JVM parameters: '{}', '{}'", PAGES_PATH.getName(), PASSWORD.getName());
-		logger.info("Current directory: {}", System.getProperty("user.dir"));
 
 		System.setProperty(SESSION_ID.getName(), getSessionId());
 
@@ -52,9 +51,9 @@ public class Main {
 
 		controllers.put("/logout", new LogoutRdrcCntr("/pages/list"));
 
-		controllers.put("/files/(.*)", new StaticController("file://files/{file}"));
+		controllers.put("/files/.*", new StaticController("file://files/"));
 
-		controllers.put("/(favicon\\.ico)", new StaticController("file://files/favicon.ico"));
+		controllers.put("/favicon\\.ico", new StaticController("file://files/favicon.ico"));
 
 		PageListTmplCntr pageListTmplCntr = new PageListTmplCntr("file://templates/list.vm");
 		controllers.put("/pages/list", pageListTmplCntr);

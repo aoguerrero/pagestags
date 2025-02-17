@@ -1,6 +1,6 @@
-package com.pagestags.db;
+package onl.andres.pt.db;
 
-import static com.pagestags.PagestagsParameters.PAGES_PATH;
+import static onl.andres.pt.PTParameters.PAGES_PATH;
 
 import java.io.BufferedReader;
 import java.nio.file.Files;
@@ -10,8 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-import com.pagestags.mdl.Page;
-import com.pagestags.thinmvc.excp.ServiceException;
+import onl.andres.pt.mdl.Page;
+import onl.andres.thinmvc.excp.ServiceException;
 
 public class PagesRepository {
 

@@ -1,9 +1,10 @@
-package com.pagestags.cntr;
+package onl.andres.pt.cntr;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.pagestags.thinmvc.cntr.TemplateController;
+import io.netty.handler.codec.http.HttpRequest;
+import onl.andres.thinmvc.cntr.TemplateController;
 
 public class LoginTmplCntr extends TemplateController {
 
@@ -11,7 +12,7 @@ public class LoginTmplCntr extends TemplateController {
 		super(path);
 	}
 
-	public Map<String, Object> getContext() {
+	public Map<String, Object> getContext(HttpRequest request) {
 		Map<String, Object> data = new HashMap<>();
 		data.put("page_title", "Login");
 		return data;

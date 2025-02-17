@@ -9,9 +9,9 @@ $content
 <p><strong>Visibility</strong> #if ($public)Public#{else}Private#end</p>
 #end
 <p>
-<a class="btn" href="$base_path/pages/list/$tags_url">Back</a>
-#if ($auth)<a class="btn" href="$base_path/pages/$id/edit">Edit</a>
-<a class="btn" href="$base_path/pages/$id/delete/confirmation">Delete</a>#end
+<a class="btn" href="/pages/list/$tags_url">Back</a>
+#if ($auth)<a class="btn" href="/pages/$id/edit">Edit</a>
+<a class="btn" href="/pages/$id/delete/confirmation">Delete</a>#end
 </p>
 </body>
 </html>

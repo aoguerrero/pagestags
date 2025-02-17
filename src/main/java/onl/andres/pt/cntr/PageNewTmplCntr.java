@@ -1,13 +1,12 @@
-package com.pagestags.cntr;
-
-import static com.pagestags.thinmvc.ThinmvcParameters.BASE_PATH;
+package onl.andres.pt.cntr;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.pagestags.thinmvc.cntr.TemplateController;
+import io.netty.handler.codec.http.HttpRequest;
+import onl.andres.thinmvc.cntr.TemplateController;
 
 public class PageNewTmplCntr extends TemplateController {
 
@@ -15,9 +14,9 @@ public class PageNewTmplCntr extends TemplateController {
 		super(path);
 	}
 
-	public Map<String, Object> getContext() {
+	public Map<String, Object> getContext(HttpRequest request) {
 
-		Matcher matcher = Pattern.compile(BASE_PATH.get() + "/pages/new/(.*)").matcher(request.uri());
+		Matcher matcher = Pattern.compile("/pages/new/(.*)").matcher(request.uri());
 
 		String selectedTagsStr = "";
 		String selectedTagsStrSp = "";

@@ -1,6 +1,4 @@
-package com.pagestags.cntr;
-
-import static com.pagestags.thinmvc.ThinmvcParameters.BASE_PATH;
+package onl.andres.pt.cntr;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -10,11 +8,12 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.pagestags.TemplateUtil;
-import com.pagestags.auth.AuthValidator;
-import com.pagestags.db.PagesRepository;
-import com.pagestags.mdl.Page;
-import com.pagestags.thinmvc.cntr.TemplateController;
+import io.netty.handler.codec.http.HttpRequest;
+import onl.andres.pt.TemplateUtil;
+import onl.andres.pt.auth.AuthValidator;
+import onl.andres.pt.db.PagesRepository;
+import onl.andres.pt.mdl.Page;
+import onl.andres.thinmvc.cntr.TemplateController;
 
 public class PageListTmplCntr extends TemplateController {
 
@@ -22,13 +21,13 @@ public class PageListTmplCntr extends TemplateController {
 		super(path);
 	}
 
-	public Map<String, Object> getContext() {
+	public Map<String, Object> getContext(HttpRequest request) {
 		List<Page> pages;
 		PagesRepository pagesRepo = new PagesRepository();
 		boolean auth = AuthValidator.isAuthenticated(request);
 
 		List<String> selectedTags;
-		Matcher matcher = Pattern.compile(BASE_PATH.get() + "/pages/list/(.+)").matcher(request.uri());
+		Matcher matcher = Pattern.compile("/pages/list/(.+)").matcher(request.uri());
 
 		boolean filtered = matcher.find();
 		if (filtered) {

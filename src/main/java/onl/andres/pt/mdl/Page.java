@@ -1,4 +1,4 @@
-package com.pagestags.mdl;
+package onl.andres.pt.mdl;
 
 import java.util.List;
 

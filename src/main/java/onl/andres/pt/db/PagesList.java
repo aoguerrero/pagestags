@@ -1,10 +1,10 @@
-package com.pagestags.db;
+package onl.andres.pt.db;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.pagestags.mdl.Page;
+import onl.andres.pt.mdl.Page;
 
 public enum PagesList {
 	

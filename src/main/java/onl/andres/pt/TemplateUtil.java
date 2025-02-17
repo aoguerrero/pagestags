@@ -1,4 +1,4 @@
-package com.pagestags;
+package onl.andres.pt;
 
 import java.util.Arrays;
 import java.util.List;

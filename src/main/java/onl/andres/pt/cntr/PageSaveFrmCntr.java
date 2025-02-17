@@ -1,23 +1,24 @@
-package com.pagestags.cntr;
+package onl.andres.pt.cntr;
 
-import static com.pagestags.PagestagsParameters.PAGES_PATH;
-import static com.pagestags.thinmvc.ThinmvcParameters.BASE_PATH;
+import static onl.andres.pt.PTParameters.PAGES_PATH;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.Normalizer;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.pagestags.auth.AuthValidator;
-import com.pagestags.db.PagesRepository;
-import com.pagestags.mdl.Page;
-import com.pagestags.thinmvc.cntr.FormController;
-import com.pagestags.thinmvc.excp.ServiceException;
-import com.pagestags.thinmvc.utl.FileSystemUtils;
+import io.netty.handler.codec.http.HttpRequest;
+import onl.andres.pt.auth.AuthValidator;
+import onl.andres.pt.db.PagesRepository;
+import onl.andres.pt.mdl.Page;
+import onl.andres.thinmvc.cntr.FormController;
+import onl.andres.thinmvc.excp.ServiceException;
+import onl.andres.thinmvc.utl.FileSystemUtils;
 
 public class PageSaveFrmCntr extends FormController {
 
@@ -26,29 +27,29 @@ public class PageSaveFrmCntr extends FormController {
 	}
 
 	@Override
-	public Optional<String> execute() {
-		if (!AuthValidator.isAuthenticated(getRequest())) {
+	public Optional<String> execute(HttpRequest request, Map<String, String> formData) {
+		if (!AuthValidator.isAuthenticated(request)) {
 			throw new ServiceException.Unauthorized();
 		}
-		String title = getFormData().get("title");
+		String title = formData.get("title");
 
-		Matcher matcher = Pattern.compile(BASE_PATH.get() + "/pages/(.*)/save").matcher(this.getRequest().uri());
+		Matcher matcher = Pattern.compile("/pages/(.*)/save").matcher(request.uri());
 		String id = getId(title);
 		if (matcher.find()) {
 			id = matcher.group(1);
 		}
 		StringBuilder sb = new StringBuilder();
 		sb.append(title).append("\n");
-		String tags = getFormData().get("tags");
+		String tags = formData.get("tags");
 		tags = tags.replaceAll(" +", " ").trim();
 		sb.append(tags).append("\n");
-		String pblic = getFormData().get("public");
+		String pblic = formData.get("public");
 		if (pblic != null) {
 			sb.append("public").append("\n");
 		} else {
 			sb.append("private").append("\n");
 		}
-		sb.append(getFormData().get("content"));
+		sb.append(formData.get("content"));
 
 		Path savePath = Paths.get(PAGES_PATH.get(), id).toAbsolutePath();
 		FileSystemUtils.writeStringToFile(savePath, sb.toString());

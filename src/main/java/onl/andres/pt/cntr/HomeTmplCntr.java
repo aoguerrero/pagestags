@@ -1,6 +1,6 @@
-package com.pagestags.cntr;
+package onl.andres.pt.cntr;
 
-import static com.pagestags.PagestagsParameters.PAGES_PATH;
+import static onl.andres.pt.PTParameters.PAGES_PATH;
 
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
@@ -18,10 +18,11 @@ import org.commonmark.ext.image.attributes.ImageAttributesExtension;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
 
-import com.pagestags.auth.AuthValidator;
-import com.pagestags.db.PagesRepository;
-import com.pagestags.thinmvc.cntr.TemplateController;
-import com.pagestags.thinmvc.utl.FileSystemUtils;
+import io.netty.handler.codec.http.HttpRequest;
+import onl.andres.pt.auth.AuthValidator;
+import onl.andres.pt.db.PagesRepository;
+import onl.andres.thinmvc.cntr.TemplateController;
+import onl.andres.thinmvc.utl.FileSystemUtils;
 
 public class HomeTmplCntr extends TemplateController {
 
@@ -36,7 +37,7 @@ public class HomeTmplCntr extends TemplateController {
 		this.renderer = HtmlRenderer.builder().build();
 	}
 
-	public Map<String, Object> getContext() {
+	public Map<String, Object> getContext(HttpRequest request) {
 		Path path = Paths.get(PAGES_PATH.get(), "home").toAbsolutePath();
 		String[] lines = new String(FileSystemUtils.getFileContent(path), StandardCharsets.UTF_8).split("\\R");
 		StringBuilder content = new StringBuilder();
