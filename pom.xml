@@ -48,7 +48,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.pagestags.Main</mainClass>
+							<mainClass>onl.andres.pt.Main</mainClass>
 							<addClasspath>true</addClasspath>
 						</manifest>
 					</archive>
