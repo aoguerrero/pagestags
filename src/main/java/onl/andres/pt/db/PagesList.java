@@ -18,7 +18,6 @@ public enum PagesList {
 
 	public void addPage(Page page) {
 		pages.add(page);
-		Collections.sort(pages);
 	}
 
 	public void removePage(String id) {
