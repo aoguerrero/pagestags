@@ -19,10 +19,10 @@ import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
 
 import io.netty.handler.codec.http.HttpRequest;
+import onl.andres.mvcly.cntr.TemplateController;
+import onl.andres.mvcly.utl.FileSystemUtils;
 import onl.andres.pt.auth.AuthValidator;
 import onl.andres.pt.db.PagesRepository;
-import onl.andres.thinmvc.cntr.TemplateController;
-import onl.andres.thinmvc.utl.FileSystemUtils;
 
 public class HomeTmplCntr extends TemplateController {
 
@@ -31,9 +31,9 @@ public class HomeTmplCntr extends TemplateController {
 
 	public HomeTmplCntr(String path) {
 		super(path);
-		Set<Extension> EXTENSIONS = Set.of(AutolinkExtension.create(), TablesExtension.create(),
+		Set<Extension> extensions = Set.of(AutolinkExtension.create(), TablesExtension.create(),
 				ImageAttributesExtension.create());
-		this.parser = Parser.builder().extensions(EXTENSIONS).build();
+		this.parser = Parser.builder().extensions(extensions).build();
 		this.renderer = HtmlRenderer.builder().build();
 	}
 

@@ -1,7 +1,6 @@
 package onl.andres.pt.db;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import onl.andres.pt.mdl.Page;

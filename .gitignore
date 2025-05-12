@@ -3,4 +3,5 @@
 .settings/
 target/
 pages/
+pages.tar
 update.sh

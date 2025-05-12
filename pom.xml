@@ -14,7 +14,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>onl.andres</groupId>
-			<artifactId>thinmvc</artifactId>
+			<artifactId>mvcly</artifactId>
 			<version>1.0</version>
 		</dependency>
 		<dependency>

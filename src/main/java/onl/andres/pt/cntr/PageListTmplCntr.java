@@ -1,13 +1,5 @@
 package onl.andres.pt.cntr;
 
-import io.netty.handler.codec.http.HttpRequest;
-
-import onl.andres.pt.TemplateUtil;
-import onl.andres.pt.auth.AuthValidator;
-import onl.andres.pt.db.PagesRepository;
-import onl.andres.pt.mdl.Page;
-import onl.andres.thinmvc.cntr.TemplateController;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -16,6 +8,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import io.netty.handler.codec.http.HttpRequest;
+import onl.andres.mvcly.cntr.TemplateController;
+import onl.andres.pt.TemplateUtil;
+import onl.andres.pt.auth.AuthValidator;
+import onl.andres.pt.db.PagesRepository;
+import onl.andres.pt.mdl.Page;
 
 public class PageListTmplCntr extends TemplateController {
 

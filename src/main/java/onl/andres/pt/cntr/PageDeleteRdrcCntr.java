@@ -10,10 +10,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import io.netty.handler.codec.http.HttpRequest;
+import onl.andres.mvcly.cntr.RedirectController;
+import onl.andres.mvcly.excp.ServiceException;
 import onl.andres.pt.auth.AuthValidator;
 import onl.andres.pt.db.PagesRepository;
-import onl.andres.thinmvc.cntr.RedirectController;
-import onl.andres.thinmvc.excp.ServiceException;
 
 public class PageDeleteRdrcCntr extends RedirectController {
 

@@ -13,6 +13,9 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import onl.andres.mvcly.Application;
+import onl.andres.mvcly.cntr.BaseController;
+import onl.andres.mvcly.cntr.StaticController;
 import onl.andres.pt.cntr.HomeTmplCntr;
 import onl.andres.pt.cntr.LoginTmplCntr;
 import onl.andres.pt.cntr.LoginValidateFrmCntr;
@@ -24,9 +27,6 @@ import onl.andres.pt.cntr.PageNewTmplCntr;
 import onl.andres.pt.cntr.PageSaveFrmCntr;
 import onl.andres.pt.cntr.PageViewTmplCntr;
 import onl.andres.pt.db.PagesRepository;
-import onl.andres.thinmvc.Application;
-import onl.andres.thinmvc.cntr.BaseController;
-import onl.andres.thinmvc.cntr.StaticController;
 
 public class Main {
 
@@ -43,21 +43,23 @@ public class Main {
 
 		Map<String, BaseController> controllers = new HashMap<>();
 
+		final String PAGES_LIST = "/pages/list";
+
 		controllers.put("/", new HomeTmplCntr("file://templates/home.vm"));
 
 		controllers.put("/login", new LoginTmplCntr("file://templates/login.vm"));
 
-		controllers.put("/login/validate", new LoginValidateFrmCntr("/pages/list"));
+		controllers.put("/login/validate", new LoginValidateFrmCntr(PAGES_LIST));
 
-		controllers.put("/logout", new LogoutRdrcCntr("/pages/list"));
+		controllers.put("/logout", new LogoutRdrcCntr(PAGES_LIST));
 
 		controllers.put("/files/.*", new StaticController("file://files/"));
 
 		controllers.put("/favicon\\.ico", new StaticController("file://files/favicon.ico"));
 
 		PageListTmplCntr pageListTmplCntr = new PageListTmplCntr("file://templates/list.vm");
-		controllers.put("/pages/list", pageListTmplCntr);
-		controllers.put("/pages/list/(.*)", pageListTmplCntr);
+		controllers.put(PAGES_LIST, pageListTmplCntr);
+		controllers.put(PAGES_LIST + "/(.*)", pageListTmplCntr);
 
 		controllers.put("/pages/(.*)/view", new PageViewTmplCntr("file://templates/view.vm"));
 
@@ -71,9 +73,9 @@ public class Main {
 
 		controllers.put("/pages/(.*)/delete/confirmation",
 				new PageDeleteConfirmationTmplCntr("file://templates/delete_confirmation.vm"));
-		controllers.put("/pages/(.*)/delete", new PageDeleteRdrcCntr("/pages/list"));
+		controllers.put("/pages/(.*)/delete", new PageDeleteRdrcCntr(PAGES_LIST));
 
-		Application.start(controllers);
+		new Application().start(controllers);
 	}
 
 	public static String getSessionId() {

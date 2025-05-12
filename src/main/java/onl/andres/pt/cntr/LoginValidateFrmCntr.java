@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.Optional;
 
 import io.netty.handler.codec.http.HttpRequest;
-import onl.andres.thinmvc.cntr.FormController;
-import onl.andres.thinmvc.excp.ServiceException;;
+import onl.andres.mvcly.cntr.FormController;
+import onl.andres.mvcly.excp.ServiceException;
 
 public class LoginValidateFrmCntr extends FormController {
 

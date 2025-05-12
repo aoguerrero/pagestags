@@ -19,10 +19,10 @@ import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
 
 import io.netty.handler.codec.http.HttpRequest;
+import onl.andres.mvcly.cntr.TemplateController;
+import onl.andres.mvcly.excp.ServiceException;
+import onl.andres.mvcly.utl.FileSystemUtils;
 import onl.andres.pt.auth.AuthValidator;
-import onl.andres.thinmvc.cntr.TemplateController;
-import onl.andres.thinmvc.excp.ServiceException;
-import onl.andres.thinmvc.utl.FileSystemUtils;
 
 public class PageViewTmplCntr extends TemplateController {
 
@@ -31,9 +31,9 @@ public class PageViewTmplCntr extends TemplateController {
 
 	public PageViewTmplCntr(String path) {
 		super(path);
-		Set<Extension> EXTENSIONS = Set.of(AutolinkExtension.create(), TablesExtension.create(),
+		Set<Extension> extensions = Set.of(AutolinkExtension.create(), TablesExtension.create(),
 				ImageAttributesExtension.create());
-		this.parser = Parser.builder().extensions(EXTENSIONS).build();
+		this.parser = Parser.builder().extensions(extensions).build();
 		this.renderer = HtmlRenderer.builder().build();
 	}
 
@@ -50,10 +50,8 @@ public class PageViewTmplCntr extends TemplateController {
 			boolean pblic = lines[2].equals("public");
 			boolean edit = action.equals("edit");
 
-			if (!pblic || edit) {
-				if (!auth) {
-					throw new ServiceException.Unauthorized();
-				}
+			if ((!pblic || edit) && !auth) {
+				throw new ServiceException.Unauthorized();
 			}
 			StringBuilder content = new StringBuilder();
 			if (lines.length > 3) {

@@ -10,8 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
+import onl.andres.mvcly.excp.ServiceException;
 import onl.andres.pt.mdl.Page;
-import onl.andres.thinmvc.excp.ServiceException;
 
 public class PagesRepository {
 

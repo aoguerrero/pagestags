@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import io.netty.handler.codec.http.HttpRequest;
-import onl.andres.thinmvc.cntr.TemplateController;
+import onl.andres.mvcly.cntr.TemplateController;
 
 public class PageDeleteConfirmationTmplCntr extends TemplateController {
 

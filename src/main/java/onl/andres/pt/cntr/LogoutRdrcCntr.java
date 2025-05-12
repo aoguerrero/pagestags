@@ -1,7 +1,7 @@
 package onl.andres.pt.cntr;
 
 import io.netty.handler.codec.http.HttpRequest;
-import onl.andres.thinmvc.cntr.RedirectController;
+import onl.andres.mvcly.cntr.RedirectController;
 
 public class LogoutRdrcCntr extends RedirectController {
 

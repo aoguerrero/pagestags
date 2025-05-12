@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import io.netty.handler.codec.http.HttpRequest;
-import onl.andres.thinmvc.cntr.TemplateController;
+import onl.andres.mvcly.cntr.TemplateController;
 
 public class LoginTmplCntr extends TemplateController {
 

@@ -13,12 +13,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import io.netty.handler.codec.http.HttpRequest;
+import onl.andres.mvcly.cntr.FormController;
+import onl.andres.mvcly.excp.ServiceException;
+import onl.andres.mvcly.utl.FileSystemUtils;
 import onl.andres.pt.auth.AuthValidator;
 import onl.andres.pt.db.PagesRepository;
 import onl.andres.pt.mdl.Page;
-import onl.andres.thinmvc.cntr.FormController;
-import onl.andres.thinmvc.excp.ServiceException;
-import onl.andres.thinmvc.utl.FileSystemUtils;
 
 public class PageSaveFrmCntr extends FormController {
 
@@ -61,17 +61,17 @@ public class PageSaveFrmCntr extends FormController {
 	}
 
 	private String getId(String title) {
-		String id = Normalizer.normalize(title, Normalizer.Form.NFD).toLowerCase().replaceAll("\\W+", "_");
+		StringBuilder id = new StringBuilder(Normalizer.normalize(title, Normalizer.Form.NFD).toLowerCase().replaceAll("\\W+", "_"));
 		boolean valid = false;
 		int counter = 0;
 		while (!valid) {
-			Path savePath = Paths.get(PAGES_PATH.get(), id).toAbsolutePath();
+			Path savePath = Paths.get(PAGES_PATH.get(), id.toString()).toAbsolutePath();
 			if (Files.exists(savePath)) {
-				id = id + "-" + (++counter);
+				id.append("-").append(++counter);
 			} else {
 				valid = true;
 			}
 		}
-		return id;
+		return id.toString();
 	}
 }
