@@ -1,6 +1,6 @@
 package onl.andres.pt.auth;
 
-import static onl.andres.pt.PTParameters.SESSION_ID;
+import static onl.andres.pt.AppParameters.SESSION_ID;
 
 import java.util.Map;
 

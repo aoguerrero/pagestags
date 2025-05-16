@@ -1,6 +1,6 @@
 package onl.andres.pt.cntr;
 
-import static onl.andres.pt.PTParameters.PAGES_PATH;
+import static onl.andres.pt.AppParameters.PAGES_PATH;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

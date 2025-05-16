@@ -1,8 +1,9 @@
 package onl.andres.pt;
 
-import static onl.andres.pt.PTParameters.PAGES_PATH;
-import static onl.andres.pt.PTParameters.PASSWORD;
-import static onl.andres.pt.PTParameters.SESSION_ID;
+import static onl.andres.pt.AppParameters.PAGES_PATH;
+import static onl.andres.pt.AppParameters.USERNAME;
+import static onl.andres.pt.AppParameters.PASSWORD;
+import static onl.andres.pt.AppParameters.SESSION_ID;
 
 import java.security.SecureRandom;
 import java.util.Base64;
@@ -34,7 +35,7 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 
-		logger.info("Accepted JVM parameters: '{}', '{}'", PAGES_PATH.getName(), PASSWORD.getName());
+		logger.info("Accepted JVM parameters: '{}', '{}', '{}'", PAGES_PATH.getName(), USERNAME.getName(), PASSWORD.getName());
 
 		System.setProperty(SESSION_ID.getName(), getSessionId());
 
@@ -44,14 +45,15 @@ public class Main {
 		Map<String, BaseController> controllers = new HashMap<>();
 
 		final String PAGES_LIST = "/pages/list";
+		final String PAGES_ROOT = "/";
 
 		controllers.put("/", new HomeTmplCntr("file://templates/home.vm"));
 
 		controllers.put("/login", new LoginTmplCntr("file://templates/login.vm"));
 
-		controllers.put("/login/validate", new LoginValidateFrmCntr(PAGES_LIST));
+		controllers.put("/login/validate", new LoginValidateFrmCntr(PAGES_ROOT));
 
-		controllers.put("/logout", new LogoutRdrcCntr(PAGES_LIST));
+		controllers.put("/logout", new LogoutRdrcCntr(PAGES_ROOT));
 
 		controllers.put("/files/.*", new StaticController("file://files/"));
 

@@ -1,6 +1,6 @@
 package onl.andres.pt.db;
 
-import static onl.andres.pt.PTParameters.PAGES_PATH;
+import static onl.andres.pt.AppParameters.PAGES_PATH;
 
 import java.io.BufferedReader;
 import java.nio.file.Files;
@@ -21,8 +21,9 @@ public class PagesRepository {
 
 	public void scanPages() {
 		try (Stream<Path> filePathList = Files.list(pagesPath)) {
-			filePathList.filter(p -> Files.isRegularFile(p, LinkOption.NOFOLLOW_LINKS)).map(this::getContent)
-					.forEach(page -> pagesList.addPage(page));
+			pagesList.addAllPages(filePathList.filter(p -> Files.isRegularFile(p, LinkOption.NOFOLLOW_LINKS))
+					.map(this::getContent).toList());
+
 		} catch (Exception e) {
 			throw new ServiceException.InternalServer(e);
 		}

@@ -12,18 +12,22 @@ public enum PagesList {
 	private List<Page> pages;
 
 	private PagesList() {
-		pages = new ArrayList<>();
+		this.pages = new ArrayList<>();
+	}
+	
+	public synchronized void addAllPages(List<Page> pages) {
+		this.pages = pages;
+	}
+	
+	public synchronized void addPage(Page page) {
+		this.pages.add(page);
 	}
 
-	public void addPage(Page page) {
-		pages.add(page);
-	}
-
-	public void removePage(String id) {
-		pages.remove(new Page(id, null, null, false));
+	public synchronized void removePage(String id) {
+		this.pages.remove(new Page(id, null, null, false));
 	}
 
 	public List<Page> getPages() {
-		return pages;
+		return this.pages;
 	}
 }
