@@ -6,7 +6,7 @@ import java.util.List;
 import onl.andres.pt.mdl.Page;
 
 public enum PagesList {
-	
+
 	INSTANCE;
 
 	private List<Page> pages;
@@ -14,11 +14,11 @@ public enum PagesList {
 	private PagesList() {
 		this.pages = new ArrayList<>();
 	}
-	
+
 	public synchronized void addAllPages(List<Page> pages) {
-		this.pages = pages;
+		this.pages.addAll(pages);
 	}
-	
+
 	public synchronized void addPage(Page page) {
 		this.pages.add(page);
 	}
