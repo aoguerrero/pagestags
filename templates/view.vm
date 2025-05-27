@@ -5,10 +5,9 @@
 <body>
     <h1>${title}</h1>
     $content
-    <p><strong>Tags</strong> $tags</p>
-    #if ($auth)
-    <p><strong>Visibility</strong> #if ($public)Public#{else}Private#end</p>
-    #end
+    <p>
+        <span class="tag">$tags</span> #if($auth)#if($public)<span class="tag">public#else<span class="private">private</span>#end#end
+    </p>
     <p>
         <a class="btn" href="/pages/list/$tags_url">Back</a>
         #if ($auth)<a class="btn" href="/pages/$id/edit">Edit</a>
