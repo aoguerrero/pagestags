@@ -58,7 +58,7 @@ public class PageSaveFrmCntr extends FormController {
 		PagesRepository pagesRepo = new PagesRepository();
 		pagesRepo.removePage(id);
 		List<String> tagList = Arrays.asList(tags.split(" "));
-		if (!id.equals(newId)) {
+		if (newId != null && !newId.equals(id)) {
 			Path newPath = Paths.get(PAGES_PATH.get(), newId).toAbsolutePath();
 			FileSystemUtils.renameFile(savePath, newPath);
 			pagesRepo.putPage(new Page(newId, title, tagList, pblic != null));
