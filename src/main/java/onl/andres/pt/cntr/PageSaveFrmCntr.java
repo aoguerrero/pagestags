@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.Normalizer;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.regex.Matcher;
@@ -50,18 +51,26 @@ public class PageSaveFrmCntr extends FormController {
 			sb.append("private").append("\n");
 		}
 		sb.append(formData.get("content"));
+		String newId = formData.get("identifier");
 
 		Path savePath = Paths.get(PAGES_PATH.get(), id).toAbsolutePath();
 		FileSystemUtils.writeStringToFile(savePath, sb.toString());
-
 		PagesRepository pagesRepo = new PagesRepository();
 		pagesRepo.removePage(id);
-		pagesRepo.putPage(new Page(id, title, Arrays.asList(tags.split(" ")), pblic != null));
+		List<String> tagList = Arrays.asList(tags.split(" "));
+		if (!id.equals(newId)) {
+			Path newPath = Paths.get(PAGES_PATH.get(), newId).toAbsolutePath();
+			FileSystemUtils.renameFile(savePath, newPath);
+			pagesRepo.putPage(new Page(newId, title, tagList, pblic != null));
+			return Optional.of(newId);
+		}
+		pagesRepo.putPage(new Page(id, title, tagList, pblic != null));
 		return Optional.of(id);
 	}
 
 	private String getId(String title) {
-		StringBuilder id = new StringBuilder(Normalizer.normalize(title, Normalizer.Form.NFD).toLowerCase().replaceAll("\\W+", "_"));
+		StringBuilder id = new StringBuilder(
+				Normalizer.normalize(title, Normalizer.Form.NFD).toLowerCase().replaceAll("\\W+", "_"));
 		boolean valid = false;
 		int counter = 0;
 		while (!valid) {

@@ -73,6 +73,7 @@ public class PageViewTmplCntr extends TemplateController {
 			data.put("tags_url", lines[1].trim().replace(" ", "$"));
 			data.put("public", pblic);
 			data.put("auth", AuthValidator.isAuthenticated(request));
+			data.put("identifier", id);
 		}
 		return data;
 	}
