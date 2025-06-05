@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 #parse ( "${current_path}/head_tag.vm" )
-
 <body>
     #set ( $d = "$")
     #foreach ($selected_tag in $selected_tags)
@@ -13,7 +12,7 @@
     #end
     <ul>
         #foreach ($item in $items)
-        <li class="items"><a href="/pages/$item.id()/view">$item.title()</a>
+        <li class="item"><a class="item" href="/pages/$item.id()/view">$item.title()</a>
             #foreach ($tag in $item.tags())
             <span class="tag">$tag</span>
             #end
@@ -31,5 +30,4 @@
             Page</a><a class="btn" href="/logout">Logout</a>#end
     </p>
 </body>
-
 </html>

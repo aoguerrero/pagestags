@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 #parse ( "${current_path}/head_tag.vm" )
-
 <body>
     <form autocomplete="off" action="/pages/save" method="post">
         <p>Title<br />
@@ -23,5 +22,4 @@
         </p>
     </form>
 </body>
-
 </html>

@@ -34,7 +34,7 @@ public class PageViewTmplCntr extends TemplateController {
 		Set<Extension> extensions = Set.of(AutolinkExtension.create(), TablesExtension.create(),
 				ImageAttributesExtension.create());
 		this.parser = Parser.builder().extensions(extensions).build();
-		this.renderer = HtmlRenderer.builder().build();
+		this.renderer = HtmlRenderer.builder().extensions(extensions).build();
 	}
 
 	@Override
