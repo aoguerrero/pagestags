@@ -58,7 +58,7 @@ public class PagesRepository {
 	}
 
 	public List<String> getTags(boolean auth) {
-		return pagesList.getPages().stream().filter(p -> p.pblic() || auth).flatMap(p -> p.tags().stream()).distinct()
+		return pagesList.getPages().stream().filter(p -> p.pblic() || auth).flatMap(p -> p.tags().stream()).distinct().sorted()
 				.toList();
 	}
 }
