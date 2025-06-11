@@ -22,19 +22,24 @@ import io.netty.handler.codec.http.HttpRequest;
 import onl.andres.mvcly.cntr.TemplateController;
 import onl.andres.mvcly.utl.FileSystemUtils;
 import onl.andres.pt.auth.AuthValidator;
+import onl.andres.pt.db.PagesCache;
 import onl.andres.pt.db.PagesRepository;
 
 public class HomeTmplCntr extends TemplateController {
 
+	private PagesCache pagesCache;
+
 	private HtmlRenderer renderer;
 	private Parser parser;
 
-	public HomeTmplCntr(String path) {
+	public HomeTmplCntr(String path, PagesCache pagesCache) {
 		super(path);
 		Set<Extension> extensions = Set.of(AutolinkExtension.create(), TablesExtension.create(),
 				ImageAttributesExtension.create());
 		this.parser = Parser.builder().extensions(extensions).build();
 		this.renderer = HtmlRenderer.builder().build();
+
+		this.pagesCache = pagesCache;
 	}
 
 	public Map<String, Object> getContext(HttpRequest request) {
@@ -45,7 +50,7 @@ public class HomeTmplCntr extends TemplateController {
 			content.append(lines[i]).append("\n");
 		}
 		boolean auth = AuthValidator.isAuthenticated(request);
-		PagesRepository pagesRepo = new PagesRepository();
+		PagesRepository pagesRepo = new PagesRepository(pagesCache);
 		List<String> allTags = new ArrayList<>(pagesRepo.getTags(auth));
 
 		Map<String, Object> data = new HashMap<>();

@@ -18,13 +18,17 @@ import onl.andres.mvcly.cntr.FormController;
 import onl.andres.mvcly.excp.ServiceException;
 import onl.andres.mvcly.utl.FileSystemUtils;
 import onl.andres.pt.auth.AuthValidator;
+import onl.andres.pt.db.PagesCache;
 import onl.andres.pt.db.PagesRepository;
 import onl.andres.pt.mdl.Page;
 
 public class PageSaveFrmCntr extends FormController {
 
-	public PageSaveFrmCntr(String path) {
+	private PagesCache pagesCache;
+
+	public PageSaveFrmCntr(String path, PagesCache pagesCache) {
 		super(path);
+		this.pagesCache = pagesCache;
 	}
 
 	@Override
@@ -55,7 +59,7 @@ public class PageSaveFrmCntr extends FormController {
 
 		Path savePath = Paths.get(PAGES_PATH.get(), id).toAbsolutePath();
 		FileSystemUtils.writeStringToFile(savePath, sb.toString());
-		PagesRepository pagesRepo = new PagesRepository();
+		PagesRepository pagesRepo = new PagesRepository(pagesCache);
 		pagesRepo.removePage(id);
 		List<String> tagList = Arrays.asList(tags.split(" "));
 		if (newId != null && !newId.equals(id)) {

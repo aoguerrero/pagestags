@@ -1,9 +1,9 @@
 package onl.andres.pt;
 
 import static onl.andres.pt.AppParameters.PAGES_PATH;
-import static onl.andres.pt.AppParameters.USERNAME;
 import static onl.andres.pt.AppParameters.PASSWORD;
 import static onl.andres.pt.AppParameters.SESSION_ID;
+import static onl.andres.pt.AppParameters.USERNAME;
 
 import java.security.SecureRandom;
 import java.util.Base64;
@@ -27,7 +27,8 @@ import onl.andres.pt.cntr.PageListTmplCntr;
 import onl.andres.pt.cntr.PageNewTmplCntr;
 import onl.andres.pt.cntr.PageSaveFrmCntr;
 import onl.andres.pt.cntr.PageViewTmplCntr;
-import onl.andres.pt.db.PagesRepository;
+import onl.andres.pt.db.PagesCache;
+import onl.andres.pt.db.PagesScanner;
 
 public class Main {
 
@@ -35,19 +36,20 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 
-		logger.info("Accepted JVM parameters: '{}', '{}', '{}'", PAGES_PATH.getName(), USERNAME.getName(), PASSWORD.getName());
+		logger.info("Accepted JVM parameters: '{}', '{}', '{}'", PAGES_PATH.getName(), USERNAME.getName(),
+				PASSWORD.getName());
 
 		System.setProperty(SESSION_ID.getName(), getSessionId());
 
-		PagesRepository pagesRepo = new PagesRepository();
-		pagesRepo.scanPages();
+		PagesCache pagesCache = new PagesCache();
+		pagesCache.addPages(PagesScanner.scanPages());
 
 		Map<String, BaseController> controllers = new HashMap<>();
 
 		final String PAGES_LIST = "/pages/list";
 		final String PAGES_ROOT = "/";
 
-		controllers.put("/", new HomeTmplCntr("file://templates/home.vm"));
+		controllers.put("/", new HomeTmplCntr("file://templates/home.vm", pagesCache));
 
 		controllers.put("/login", new LoginTmplCntr("file://templates/login.vm"));
 
@@ -59,7 +61,7 @@ public class Main {
 
 		controllers.put("/favicon\\.ico", new StaticController("file://files/favicon.ico"));
 
-		PageListTmplCntr pageListTmplCntr = new PageListTmplCntr("file://templates/list.vm");
+		PageListTmplCntr pageListTmplCntr = new PageListTmplCntr("file://templates/list.vm", pagesCache);
 		controllers.put(PAGES_LIST, pageListTmplCntr);
 		controllers.put(PAGES_LIST + "/(.*)", pageListTmplCntr);
 
@@ -67,7 +69,7 @@ public class Main {
 
 		controllers.put("/pages/new/(.*)", new PageNewTmplCntr("file://templates/new.vm"));
 
-		PageSaveFrmCntr pageSaveFrmCntr = new PageSaveFrmCntr("/pages/{id}/view");
+		PageSaveFrmCntr pageSaveFrmCntr = new PageSaveFrmCntr("/pages/{id}/view", pagesCache);
 		controllers.put("/pages/save", pageSaveFrmCntr);
 		controllers.put("/pages/(.*)/save", pageSaveFrmCntr);
 
@@ -75,7 +77,7 @@ public class Main {
 
 		controllers.put("/pages/(.*)/delete/confirmation",
 				new PageDeleteConfirmationTmplCntr("file://templates/delete_confirmation.vm"));
-		controllers.put("/pages/(.*)/delete", new PageDeleteRdrcCntr(PAGES_LIST));
+		controllers.put("/pages/(.*)/delete", new PageDeleteRdrcCntr(PAGES_LIST, pagesCache));
 
 		new Application().start(controllers);
 	}

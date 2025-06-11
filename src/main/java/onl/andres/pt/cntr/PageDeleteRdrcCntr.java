@@ -13,13 +13,16 @@ import io.netty.handler.codec.http.HttpRequest;
 import onl.andres.mvcly.cntr.RedirectController;
 import onl.andres.mvcly.excp.ServiceException;
 import onl.andres.pt.auth.AuthValidator;
+import onl.andres.pt.db.PagesCache;
 import onl.andres.pt.db.PagesRepository;
 
 public class PageDeleteRdrcCntr extends RedirectController {
 
-	public PageDeleteRdrcCntr(String path) {
+	private PagesCache pagesCache;
+	
+	public PageDeleteRdrcCntr(String path, PagesCache pagesCache) {
 		super(path);
-
+		this.pagesCache = pagesCache;
 	}
 
 	@Override
@@ -37,7 +40,7 @@ public class PageDeleteRdrcCntr extends RedirectController {
 				}
 				Path deletePath = Paths.get(PAGES_PATH.get(), id).toAbsolutePath();
 				Files.move(deletePath, Paths.get(trashDir.toString(), id).toAbsolutePath());
-				PagesRepository pagesRepo = new PagesRepository();
+				PagesRepository pagesRepo = new PagesRepository(pagesCache);
 				pagesRepo.removePage(id);
 				return id;
 			} catch (IOException ioe) {

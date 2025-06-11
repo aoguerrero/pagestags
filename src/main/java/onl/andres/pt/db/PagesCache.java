@@ -5,17 +5,15 @@ import java.util.List;
 
 import onl.andres.pt.mdl.Page;
 
-public enum PagesList {
-
-	INSTANCE;
+public class PagesCache {
 
 	private List<Page> pages;
 
-	private PagesList() {
+	public PagesCache() {
 		this.pages = new ArrayList<>();
 	}
 
-	public synchronized void addAllPages(List<Page> pages) {
+	public synchronized void addPages(List<Page> pages) {
 		this.pages.addAll(pages);
 	}
 
