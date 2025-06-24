@@ -44,7 +44,7 @@ public class PageListTmplCntr extends TemplateController {
 		}
 
 		List<String> allTags = pages.stream().flatMap(p -> p.tags().stream()).distinct()
-				.filter(t -> !selectedTags.contains(t)).toList();
+				.filter(t -> !selectedTags.contains(t)).sorted().toList();
 
 		if (!filtered && !auth) {
 			pages = Collections.emptyList();
