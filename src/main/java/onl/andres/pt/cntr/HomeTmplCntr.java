@@ -21,6 +21,7 @@ import org.commonmark.renderer.html.HtmlRenderer;
 import io.netty.handler.codec.http.HttpRequest;
 import onl.andres.mvcly.cntr.TemplateController;
 import onl.andres.mvcly.utl.FileSystemUtils;
+import onl.andres.pt.AppParameters;
 import onl.andres.pt.auth.AuthValidator;
 import onl.andres.pt.db.PagesCache;
 import onl.andres.pt.db.PagesRepository;
@@ -54,7 +55,7 @@ public class HomeTmplCntr extends TemplateController {
 		List<String> allTags = new ArrayList<>(pagesRepo.getTags(auth));
 
 		Map<String, Object> data = new HashMap<>();
-		data.put("page_title", "Main Page");
+		data.put("page_title", AppParameters.WEBSITE.get());
 		data.put("auth", auth);
 		data.put("title", lines[0]);
 		data.put("content", renderer.render(parser.parse(content.toString())));

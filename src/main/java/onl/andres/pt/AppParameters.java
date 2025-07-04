@@ -3,7 +3,7 @@ package onl.andres.pt;
 public enum AppParameters {
 
 	PAGES_PATH("pages_path", "pages"), SESSION_ID("session_id", null), USERNAME("username", "editor"),
-	PASSWORD("password", "editor");
+	PASSWORD("password", "editor"), WEBSITE("website", "");
 
 	private final String name;
 	private final String defaultValue;

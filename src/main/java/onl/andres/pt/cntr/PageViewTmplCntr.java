@@ -65,7 +65,7 @@ public class PageViewTmplCntr extends TemplateController {
 			} else {
 				contentStr = content.toString();
 			}
-			data.put("page_title", action.equals("view") ? "View Page" : "Edit Page");
+			data.put("page_title", lines[0]);
 			data.put("content", contentStr);
 			data.put("id", id);
 			data.put("title", lines[0]);
