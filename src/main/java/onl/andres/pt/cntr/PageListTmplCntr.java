@@ -56,7 +56,7 @@ public class PageListTmplCntr extends TemplateController {
     }
 
     Map<String, Object> data = new HashMap<>();
-    data.put("page_title", AppParameters.WEBSITE.get() + " - List Pages");
+    data.put("page_title", AppParameters.WEBSITE.get());
     data.put("auth", auth);
     data.put("selected_tags_str", String.join("$", selectedTags));
     data.put("selected_tags", selectedTags);
