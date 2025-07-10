@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-#parse ( "${current_path}/head_tag.vm" )
+#parse ( "${current_path}/head_pastejs.vm" )
 <body class="edit">
     <form autocomplete="off" action="/pages/$id/save" method="post">
         <p>Title<br />
             <input type="text" name="title" size="80" value="$title" required>
         </p>
         <p>Content<br />
-            <textarea name="content" spellcheck="false" required>$content</textarea>
+            <textarea name="content" id="content" spellcheck="false" required>$content</textarea>
         </p>
         <p>Tags<br />
             <input type="text" name="tags" size="80" value="$tags" required>

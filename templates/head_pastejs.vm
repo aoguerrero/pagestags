@@ -1,0 +1,40 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/files/?path=style.css">
+    <title>${page_title}</title>
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const textarea = document.getElementById("content");
+  textarea.focus();
+  textarea.addEventListener("paste", (event) => {
+    const items = (event.clipboardData || event.originalEvent.clipboardData)
+      .items;
+    let imageFound = false;
+    for (const item of items) {
+      if (item.type.indexOf("image") !== -1) {
+        const blob = item.getAsFile();
+        if (blob) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const base64String = e.target.result;
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            textarea.value =
+              textarea.value.substring(0, start) +
+              base64String +
+              textarea.value.substring(end);
+            textarea.selectionStart = textarea.selectionEnd =
+              start + base64String.length;
+            imageFound = true;
+          };
+          reader.readAsDataURL(blob);
+          event.preventDefault();
+          break;
+        }
+      }
+    }
+  });
+});
+    </script>
+</head>

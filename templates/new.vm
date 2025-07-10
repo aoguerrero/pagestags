@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-#parse ( "${current_path}/head_tag.vm" )
+#parse ( "${current_path}/head_pastejs.vm" )
 <body>
     <form autocomplete="off" action="/pages/save" method="post">
         <p>Title<br />
