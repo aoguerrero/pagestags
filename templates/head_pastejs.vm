@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const start = textarea.selectionStart;
             const end = textarea.selectionEnd;
             textarea.value =
-              textarea.value.substring(0, start) +
-              base64String +
+              textarea.value.substring(0, start) + "\n<img src=\"" +
+              base64String + "\">\n" + 
               textarea.value.substring(end);
             textarea.selectionStart = textarea.selectionEnd =
               start + base64String.length;
