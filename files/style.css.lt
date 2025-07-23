@@ -1,6 +1,6 @@
 body {
-    background: #202124;
-    color: #E8E8E8;
+    background: ghostwhite;
+    color: black;
     font-family: sans-serif;
     font-size: 1.2em;
     max-width: 90%;
@@ -16,81 +16,76 @@ body {
     }
 }
 
-h1, h2, h3, h4, h5 {
-    color: #EEF0FF;
-}
-
 li.item {
     margin: 0.5em 0 0.5em 0;
 }
 
+li.item::marker {
+    content: "📄 ";
+}
+
 a:link,
 a:visited {
-    color: #99C3FF;
-    text-decoration: underline;
+    color: blue;
+    text-decoration: none;
 }
 
 a.item:link,
 a.item:visited {
-    color: #E8E8E8;
-    text-decoration: none;
+    color: black;
+}
+
+.code {
+    font-family: monospace;
+    color: black;
 }
 
 pre {
     white-space: pre-wrap;
     padding: 1em;
-    background: #2C303D;
-    color: #E8E8E8;
-    font-family: monospace;
-    font-size: 1.2em;
+    background: lavender;
 }
 
 textarea {
-    border: 1px solid #E8E8E8;
-    font-size: 1.2em;
-    font-family: monospace;
-    color: #E8E8E8;
-    background: #2C303D;    width: 100%;
+    width: 100%;
     height: 40em;
     max-width: 100%;
-    padding: 8px;
+    font-size: 1em;
+    font-family: monospace;
 }
 
 input[type=text],
-input[type=password] { 
-    border: 1px solid #E8E8E8;
-    font-size: 1.2em;
+input[type=password] {
+    font-size: 1em;
     font-family: monospace;
-    color: #E8E8E8;
-    background: #2C303D;
-    padding: 8px;
 }
 
 input[type=button],
 input[type=submit],
 input[type=reset] {
+    border: none;
     font-family: sans-serif;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 .btn,
 .btn:link,
 .btn:visited {
-    border: 1px solid #E8E8E8;
-    color: #E8E8E8;
+    background-color: Silver;
+    color: black;
     padding: 0.25em 1em;
     margin: 0.25em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    background: #202124;
 }
 
 .tag-btn,
 .tag-btn:link,
 .tag-btn:visited {
-    border: 1px solid #E8E8E8;
-    color: #E8E8E8;
+    background-color: White;
+    border: 1px solid Grey;
+    color: Grey;
     padding: 0.25em 1em;
     margin: 0.25em 0.1em;
     text-align: center;
@@ -101,8 +96,8 @@ input[type=reset] {
 .tag-btn-a,
 .tag-btn-a:link,
 .tag-btn-a:visited {
-    background-color: #E8E8E8;
-    color: #242832;
+    background-color: royalblue;
+    color: white;
     padding: 0.25em 1em;
     margin: 0.25em;
     text-align: center;
@@ -113,27 +108,26 @@ input[type=reset] {
 .tag {
     font-style: italic;
     font-size: 0.8em;
-    color: #99C3FF;
+    color: grey
 }
 
 .private {
     font-style: italic;
     font-size: 0.8em;
-    color: #FA903E;
+    color: red;
 }
 
 table {
     table-layout: fixed;
     border-collapse: collapse;
-    border: 1pt solid #E8E8E8;
+    border: 1pt solid grey;
 }
 
 th, td {
     padding: 0.5em;
-    border: 1pt solid #E8E8E8;
+    border: 1pt solid grey;
 }
 
 th {
-    background: white;
-    color: #202124;
+    background: lavender;
 }
