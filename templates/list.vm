@@ -10,18 +10,16 @@
     #foreach ($tag in $tags)
     <a class="tag-btn" href="/pages/list/${selected_tags_str}#if (!$selected_tags.isEmpty())$d#end${tag}">$tag</a>
     #end
-    <ul>
-        #foreach ($item in $items)
-        <li class="item"><a class="item" href="/pages/$item.id()/view">$item.title()</a>
-            #foreach ($tag in $item.tags())
-            <span class="tag">$tag</span>
-            #end
-            #if(!$item.pblic())
-            <span class="private">private</span>
-            #end
-        </li>
+    #foreach ($item in $items)
+    <p class="item"><a class="item" href="/pages/$item.id()/view">$item.title()</a>
+        #foreach ($tag in $item.tags())
+        <span class="tag">$tag</span>
         #end
-    </ul>
+        #if(!$item.pblic())
+        <span class="private">private</span>
+        #end
+    </p>
+    #end
     #if (!$filtered)
     <p>Select a category from the top.</p>
     #end
