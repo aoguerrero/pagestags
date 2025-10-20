@@ -1,4 +1,4 @@
-package onl.andres.pt.cntr;
+package onl.andres.pt.ctrl;
 
 import io.netty.handler.codec.http.HttpRequest;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import onl.andres.mvcly.cntr.TemplateController;
+import onl.andres.mvcly.ctrl.TemplateController;
 import onl.andres.pt.AppParameters;
 import onl.andres.pt.TemplateUtil;
 import onl.andres.pt.auth.AuthValidator;
@@ -17,11 +17,11 @@ import onl.andres.pt.db.PagesCache;
 import onl.andres.pt.db.PagesRepository;
 import onl.andres.pt.mdl.Page;
 
-public class PageListTmplCntr extends TemplateController {
+public class PageListTemplateCtrl extends TemplateController {
 
   private PagesCache pagesCache;
 
-  public PageListTmplCntr(String path, PagesCache pagesCache) {
+  public PageListTemplateCtrl(String path, PagesCache pagesCache) {
     super(path);
     this.pagesCache = pagesCache;
   }

@@ -1,4 +1,4 @@
-package onl.andres.pt.cntr;
+package onl.andres.pt.ctrl;
 
 import static onl.andres.pt.AppParameters.USERNAME;
 import static onl.andres.pt.AppParameters.PASSWORD;
@@ -8,12 +8,12 @@ import java.util.Map;
 import java.util.Optional;
 
 import io.netty.handler.codec.http.HttpRequest;
-import onl.andres.mvcly.cntr.FormController;
+import onl.andres.mvcly.ctrl.FormController;
 import onl.andres.mvcly.excp.ServiceException;
 
-public class LoginValidateFrmCntr extends FormController {
+public class LoginValidateFrmCtrl extends FormController {
 
-	public LoginValidateFrmCntr(String path) {
+	public LoginValidateFrmCtrl(String path) {
 		super(path);
 	}
 

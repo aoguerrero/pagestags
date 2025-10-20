@@ -1,14 +1,14 @@
-package onl.andres.pt.cntr;
+package onl.andres.pt.ctrl;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import io.netty.handler.codec.http.HttpRequest;
-import onl.andres.mvcly.cntr.TemplateController;
+import onl.andres.mvcly.ctrl.TemplateController;
 
-public class LoginTmplCntr extends TemplateController {
+public class LoginTemplateCtrl extends TemplateController {
 
-	public LoginTmplCntr(String path) {
+	public LoginTemplateCtrl(String path) {
 		super(path);
 	}
 

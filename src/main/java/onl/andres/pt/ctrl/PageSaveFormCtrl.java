@@ -1,4 +1,4 @@
-package onl.andres.pt.cntr;
+package onl.andres.pt.ctrl;
 
 import static onl.andres.pt.AppParameters.PAGES_PATH;
 
@@ -14,7 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import io.netty.handler.codec.http.HttpRequest;
-import onl.andres.mvcly.cntr.FormController;
+import onl.andres.mvcly.ctrl.FormController;
 import onl.andres.mvcly.excp.ServiceException;
 import onl.andres.mvcly.utl.FileSystemUtils;
 import onl.andres.pt.auth.AuthValidator;
@@ -22,11 +22,11 @@ import onl.andres.pt.db.PagesCache;
 import onl.andres.pt.db.PagesRepository;
 import onl.andres.pt.mdl.Page;
 
-public class PageSaveFrmCntr extends FormController {
+public class PageSaveFormCtrl extends FormController {
 
 	private PagesCache pagesCache;
 
-	public PageSaveFrmCntr(String path, PagesCache pagesCache) {
+	public PageSaveFormCtrl(String path, PagesCache pagesCache) {
 		super(path);
 		this.pagesCache = pagesCache;
 	}

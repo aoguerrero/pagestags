@@ -1,4 +1,4 @@
-package onl.andres.pt.cntr;
+package onl.andres.pt.ctrl;
 
 import static onl.andres.pt.AppParameters.PAGES_PATH;
 
@@ -10,17 +10,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import io.netty.handler.codec.http.HttpRequest;
-import onl.andres.mvcly.cntr.RedirectController;
+import onl.andres.mvcly.ctrl.RedirectController;
 import onl.andres.mvcly.excp.ServiceException;
 import onl.andres.pt.auth.AuthValidator;
 import onl.andres.pt.db.PagesCache;
 import onl.andres.pt.db.PagesRepository;
 
-public class PageDeleteRdrcCntr extends RedirectController {
+public class PageDeleteRedirectCtrl extends RedirectController {
 
 	private PagesCache pagesCache;
 	
-	public PageDeleteRdrcCntr(String path, PagesCache pagesCache) {
+	public PageDeleteRedirectCtrl(String path, PagesCache pagesCache) {
 		super(path);
 		this.pagesCache = pagesCache;
 	}

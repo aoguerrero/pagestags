@@ -1,4 +1,4 @@
-package onl.andres.pt.cntr;
+package onl.andres.pt.ctrl;
 
 import static onl.andres.pt.AppParameters.PAGES_PATH;
 
@@ -19,17 +19,17 @@ import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
 
 import io.netty.handler.codec.http.HttpRequest;
-import onl.andres.mvcly.cntr.TemplateController;
+import onl.andres.mvcly.ctrl.TemplateController;
 import onl.andres.mvcly.excp.ServiceException;
 import onl.andres.mvcly.utl.FileSystemUtils;
 import onl.andres.pt.auth.AuthValidator;
 
-public class PageViewTmplCntr extends TemplateController {
+public class PageViewTemplateCtrl extends TemplateController {
 
 	private HtmlRenderer renderer;
 	private Parser parser;
 
-	public PageViewTmplCntr(String path) {
+	public PageViewTemplateCtrl(String path) {
 		super(path);
 		Set<Extension> extensions = Set.of(AutolinkExtension.create(), TablesExtension.create(),
 				ImageAttributesExtension.create());

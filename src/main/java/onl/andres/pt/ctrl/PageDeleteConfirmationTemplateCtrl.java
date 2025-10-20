@@ -1,4 +1,4 @@
-package onl.andres.pt.cntr;
+package onl.andres.pt.ctrl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,11 +6,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import io.netty.handler.codec.http.HttpRequest;
-import onl.andres.mvcly.cntr.TemplateController;
+import onl.andres.mvcly.ctrl.TemplateController;
 
-public class PageDeleteConfirmationTmplCntr extends TemplateController {
+public class PageDeleteConfirmationTemplateCtrl extends TemplateController {
 
-	public PageDeleteConfirmationTmplCntr(String path) {
+	public PageDeleteConfirmationTemplateCtrl(String path) {
 		super(path);
 	}
 
