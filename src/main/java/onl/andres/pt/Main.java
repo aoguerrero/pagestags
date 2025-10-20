@@ -23,6 +23,7 @@ import onl.andres.pt.db.PagesScanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static onl.andres.mvcly.ThinmvcParameters.TEMPLATES_PATH;
 import static onl.andres.pt.AppParameters.*;
 
 public class Main {
@@ -36,6 +37,8 @@ public class Main {
         PAGES_PATH.getName(),
         USERNAME.getName(),
         PASSWORD.getName());
+
+    logger.info("Pages path: {}", PAGES_PATH.get());
 
     System.setProperty(SESSION_ID.getName(), getSessionId());
 
