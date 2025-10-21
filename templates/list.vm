@@ -10,6 +10,11 @@
     #foreach ($tag in $tags)
     <a class="tag-btn" href="/pages/list/${selected_tags_str}#if (!$selected_tags.isEmpty())$d#end${tag}">$tag</a>
     #end
+    <p>
+        <a class="btn" href="/">Home</a>
+        #if ($auth)<a class="btn" href="/pages/new/$selected_tags_str">New Page</a>
+        <a class="btn" href="/logout">Logout</a>#end
+    </p>
     #foreach ($item in $items)
     <p class="item"><a class="item" href="/pages/$item.id()/view">$item.title()</a>
         #foreach ($tag in $item.tags())
@@ -20,12 +25,8 @@
         #end
     </p>
     #end
-    #if (!$filtered)
+    #if (!$filtered && !$auth)
     <p>Select a category from the top.</p>
     #end
-    <p>
-        <a class="btn" href="/">Main Page</a>#if ($auth)<a class="btn" href="/pages/new/$selected_tags_str">New
-            Page</a><a class="btn" href="/logout">Logout</a>#end
-    </p>
 </body>
 </html>

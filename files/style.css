@@ -38,12 +38,10 @@ pre {
     background: #2C303D;
     color: #E8E8E8;
     font-family: monospace;
-    font-size: 1.2em;
 }
 
 textarea {
     border: 1px solid #E8E8E8;
-    font-size: 1.2em;
     font-family: monospace;
     color: #E8E8E8;
     background: #2C303D;
@@ -56,27 +54,20 @@ textarea {
 input[type=text],
 input[type=password] { 
     border: 1px solid #E8E8E8;
-    font-size: 1.2em;
     font-family: monospace;
     color: #E8E8E8;
     background: #2C303D;
     padding: 8px;
 }
 
-input[type=button],
-input[type=submit],
-input[type=reset] {
-    font-family: sans-serif;
-    font-size: 1.2em;
-}
-
 .btn,
 .btn:link,
 .btn:visited {
+    font-size: 1em;
     border: 1px solid #E8E8E8;
     color: #E8E8E8;
-    padding: 8px 12px;
-    margin: 4px;
+    padding: 4px 8px;
+    margin: 2px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -86,10 +77,11 @@ input[type=reset] {
 .tag-btn,
 .tag-btn:link,
 .tag-btn:visited {
-    border: 1px solid #E8E8E8;
-    color: #E8E8E8;
-    padding: 8px 12px;
-    margin: 4px;
+    font-size: 0.8em;
+    border: 1px solid #99C3FF;
+    color: #99C3FF;
+    padding: 4px 6px;
+    margin: 2px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -98,10 +90,12 @@ input[type=reset] {
 .tag-btn-a,
 .tag-btn-a:link,
 .tag-btn-a:visited {
-    background-color: #E8E8E8;
+    font-size: 0.8em;
+    border: 1px solid #99C3FF;
+    background-color: #99C3FF;
     color: #242832;
-    padding: 8px 12px;
-    margin: 4px;
+    padding: 4px 6px;
+    margin: 2px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
