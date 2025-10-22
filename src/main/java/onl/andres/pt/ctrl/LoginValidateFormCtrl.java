@@ -11,10 +11,10 @@ import io.netty.handler.codec.http.HttpRequest;
 import onl.andres.mvcly.ctrl.FormController;
 import onl.andres.mvcly.excp.ServiceException;
 
-public class LoginValidateFrmCtrl extends FormController {
+public class LoginValidateFormCtrl extends FormController {
 
-	public LoginValidateFrmCtrl(String path) {
-		super(path);
+	public LoginValidateFormCtrl(String redirectPath) {
+		super(redirectPath);
 	}
 
 	@Override

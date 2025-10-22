@@ -10,8 +10,8 @@ import onl.andres.mvcly.ctrl.TemplateController;
 
 public class PageNewTemplateCtrl extends TemplateController {
 
-	public PageNewTemplateCtrl(String path) {
-		super(path);
+	public PageNewTemplateCtrl(String path, Map<String, byte[]> templatesMap) {
+		super(path, templatesMap);
 	}
 
 	public Map<String, Object> getContext(HttpRequest request) {

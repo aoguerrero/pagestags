@@ -26,8 +26,8 @@ public class PageSaveFormCtrl extends FormController {
 
 	private PagesCache pagesCache;
 
-	public PageSaveFormCtrl(String path, PagesCache pagesCache) {
-		super(path);
+	public PageSaveFormCtrl(String redirectPath, PagesCache pagesCache) {
+		super(redirectPath);
 		this.pagesCache = pagesCache;
 	}
 

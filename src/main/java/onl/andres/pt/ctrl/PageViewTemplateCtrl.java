@@ -29,8 +29,8 @@ public class PageViewTemplateCtrl extends TemplateController {
 	private HtmlRenderer renderer;
 	private Parser parser;
 
-	public PageViewTemplateCtrl(String path) {
-		super(path);
+	public PageViewTemplateCtrl(String path, Map<String, byte[]> templatesMap) {
+		super(path, templatesMap);
 		Set<Extension> extensions = Set.of(AutolinkExtension.create(), TablesExtension.create(),
 				ImageAttributesExtension.create());
 		this.parser = Parser.builder().extensions(extensions).build();

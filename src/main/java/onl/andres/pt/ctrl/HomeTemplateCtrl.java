@@ -33,8 +33,8 @@ public class HomeTemplateCtrl extends TemplateController {
 	private HtmlRenderer renderer;
 	private Parser parser;
 
-	public HomeTemplateCtrl(String path, PagesCache pagesCache) {
-		super(path);
+	public HomeTemplateCtrl(String path, Map<String, byte[]> templatesMap, PagesCache pagesCache) {
+		super(path, templatesMap);
 		Set<Extension> extensions = Set.of(AutolinkExtension.create(), TablesExtension.create(),
 				ImageAttributesExtension.create());
 		this.parser = Parser.builder().extensions(extensions).build();

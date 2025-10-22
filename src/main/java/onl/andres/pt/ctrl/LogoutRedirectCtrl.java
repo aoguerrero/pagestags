@@ -5,8 +5,8 @@ import onl.andres.mvcly.ctrl.RedirectController;
 
 public class LogoutRedirectCtrl extends RedirectController {
 
-	public LogoutRedirectCtrl(String path) {
-		super(path);
+	public LogoutRedirectCtrl(String redirectPath) {
+		super(redirectPath);
 	}
 
 	@Override
@@ -14,5 +14,4 @@ public class LogoutRedirectCtrl extends RedirectController {
 		getResponseHeaders().add("Set-Cookie", "sessionId=; Path=/");
 		return null;
 	}
-
 }

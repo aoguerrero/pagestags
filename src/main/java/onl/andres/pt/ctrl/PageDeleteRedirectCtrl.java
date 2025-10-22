@@ -20,8 +20,8 @@ public class PageDeleteRedirectCtrl extends RedirectController {
 
 	private PagesCache pagesCache;
 	
-	public PageDeleteRedirectCtrl(String path, PagesCache pagesCache) {
-		super(path);
+	public PageDeleteRedirectCtrl(String redirectPath, PagesCache pagesCache) {
+		super(redirectPath);
 		this.pagesCache = pagesCache;
 	}
 

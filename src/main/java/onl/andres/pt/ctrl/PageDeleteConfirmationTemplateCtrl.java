@@ -10,8 +10,8 @@ import onl.andres.mvcly.ctrl.TemplateController;
 
 public class PageDeleteConfirmationTemplateCtrl extends TemplateController {
 
-	public PageDeleteConfirmationTemplateCtrl(String path) {
-		super(path);
+	public PageDeleteConfirmationTemplateCtrl(String path, Map<String, byte[]> templatesMap) {
+		super(path, templatesMap);
 	}
 
 	@Override

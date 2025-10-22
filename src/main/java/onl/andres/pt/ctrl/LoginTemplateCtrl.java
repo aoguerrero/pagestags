@@ -8,8 +8,8 @@ import onl.andres.mvcly.ctrl.TemplateController;
 
 public class LoginTemplateCtrl extends TemplateController {
 
-	public LoginTemplateCtrl(String path) {
-		super(path);
+	public LoginTemplateCtrl(String path, Map<String, byte[]> templatesMap) {
+		super(path, templatesMap);
 	}
 
 	public Map<String, Object> getContext(HttpRequest request) {

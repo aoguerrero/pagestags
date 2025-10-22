@@ -21,8 +21,8 @@ public class PageListTemplateCtrl extends TemplateController {
 
   private PagesCache pagesCache;
 
-  public PageListTemplateCtrl(String path, PagesCache pagesCache) {
-    super(path);
+  public PageListTemplateCtrl(String path, Map<String, byte[]> templatesMap, PagesCache pagesCache) {
+    super(path, templatesMap);
     this.pagesCache = pagesCache;
   }
 
