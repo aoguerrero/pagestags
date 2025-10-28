@@ -1,6 +1,11 @@
 package onl.andres.pt.ctrl;
 
-import static onl.andres.pt.AppParameters.PAGES_PATH;
+import io.netty.handler.codec.http.HttpRequest;
+import onl.andres.mvcly.ctrl.RedirectController;
+import onl.andres.mvcly.excp.ServiceException;
+import onl.andres.pt.core.PagesTagsCtx;
+import onl.andres.pt.auth.AuthValidator;
+import onl.andres.pt.mdl.Page;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,20 +14,15 @@ import java.nio.file.Paths;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import io.netty.handler.codec.http.HttpRequest;
-import onl.andres.mvcly.ctrl.RedirectController;
-import onl.andres.mvcly.excp.ServiceException;
-import onl.andres.pt.auth.AuthValidator;
-import onl.andres.pt.db.PagesCache;
-import onl.andres.pt.db.PagesRepository;
+import static onl.andres.pt.core.AppParameters.PAGES_PATH;
 
 public class PageDeleteRedirectCtrl extends RedirectController {
 
-	private PagesCache pagesCache;
-	
-	public PageDeleteRedirectCtrl(String redirectPath, PagesCache pagesCache) {
+    private final PagesTagsCtx ctx;
+
+	public PageDeleteRedirectCtrl(String redirectPath, PagesTagsCtx ctx) {
 		super(redirectPath);
-		this.pagesCache = pagesCache;
+		this.ctx = ctx;
 	}
 
 	@Override
@@ -40,8 +40,7 @@ public class PageDeleteRedirectCtrl extends RedirectController {
 				}
 				Path deletePath = Paths.get(PAGES_PATH.get(), id).toAbsolutePath();
 				Files.move(deletePath, Paths.get(trashDir.toString(), id).toAbsolutePath());
-				PagesRepository pagesRepo = new PagesRepository(pagesCache);
-				pagesRepo.removePage(id);
+                ctx.getPages().remove(new Page(id));
 				return id;
 			} catch (IOException ioe) {
 				throw new ServiceException.InternalServer(ioe);

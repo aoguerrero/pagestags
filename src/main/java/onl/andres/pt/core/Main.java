@@ -1,11 +1,9 @@
-package onl.andres.pt;
+package onl.andres.pt.core;
 
-import onl.andres.mvcly.Application;
+import onl.andres.mvcly.core.Application;
 import onl.andres.mvcly.ctrl.BaseController;
 import onl.andres.mvcly.ctrl.StaticController;
 import onl.andres.pt.ctrl.*;
-import onl.andres.pt.db.PagesCache;
-import onl.andres.pt.db.PagesScanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import static onl.andres.pt.AppParameters.*;
+import static onl.andres.pt.core.AppParameters.*;
 
 public class Main {
 
@@ -31,17 +29,15 @@ public class Main {
 
     System.setProperty(SESSION_ID.getName(), UUID.randomUUID().toString());
 
-    PagesCache pagesCache = new PagesCache();
-    Map<String, byte[]> templatesMap = new HashMap<>();
-    pagesCache.addPages(PagesScanner.scanPages());
+    PagesTagsCtx ctx = new PagesTagsCtx();
 
     Map<String, BaseController> controllers = new HashMap<>();
 
     final String ROOT_PATH = "/";
 
-    controllers.put("/", new HomeTemplateCtrl("home.vm", templatesMap, pagesCache));
+    controllers.put("/", new HomeTemplateCtrl("home.vm", ctx));
 
-    controllers.put("/login", new LoginTemplateCtrl("login.vm", templatesMap));
+    controllers.put("/login", new LoginTemplateCtrl("login.vm", ctx));
 
     controllers.put("/login/validate", new LoginValidateFormCtrl(ROOT_PATH));
 
@@ -51,21 +47,21 @@ public class Main {
 
     controllers.put("/favicon\\.ico", new StaticController("favicon.ico"));
 
-    controllers.put("/pages/list(/.*)?", new PageListTemplateCtrl("list.vm", templatesMap, pagesCache));
+    controllers.put("/pages/list(/.*)?", new PageListTemplateCtrl("list.vm", ctx));
 
-    controllers.put("/pages/(.*)/view", new PageViewTemplateCtrl("view.vm", templatesMap));
+    controllers.put("/pages/(.*)/view", new PageViewTemplateCtrl("view.vm", ctx));
 
-    controllers.put("/pages/new/(.*)", new PageNewTemplateCtrl("new.vm", templatesMap));
+    controllers.put("/pages/new/(.*)", new PageNewTemplateCtrl("new.vm", ctx));
 
-    PageSaveFormCtrl pageSaveFormCtrl = new PageSaveFormCtrl("/pages/{id}/view", pagesCache);
+    PageSaveFormCtrl pageSaveFormCtrl = new PageSaveFormCtrl("/pages/{id}/view", ctx);
     controllers.put("/pages/save", pageSaveFormCtrl);
     controllers.put("/pages/(.*)/save", pageSaveFormCtrl);
 
-    controllers.put("/pages/(.*)/edit", new PageViewTemplateCtrl("edit.vm", templatesMap));
+    controllers.put("/pages/(.*)/edit", new PageViewTemplateCtrl("edit.vm", ctx));
 
     controllers.put("/pages/(.*)/delete/confirmation",
-            new PageDeleteConfirmationTemplateCtrl("delete_confirmation.vm", templatesMap));
-    controllers.put("/pages/(.*)/delete", new PageDeleteRedirectCtrl("/pages/list", pagesCache));
+            new PageDeleteConfirmationTemplateCtrl("delete_confirmation.vm", ctx));
+    controllers.put("/pages/(.*)/delete", new PageDeleteRedirectCtrl("/pages/list", ctx));
 
     new Application().start(controllers);
   }

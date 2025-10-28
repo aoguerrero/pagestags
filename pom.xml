@@ -46,7 +46,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>onl.andres.pt.Main</mainClass>
+                            <mainClass>onl.andres.pt.core.Main</mainClass>
                             <addClasspath>true</addClasspath>
                         </manifest>
                     </archive>
@@ -57,7 +57,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.5.1</version>
                 <configuration>
-                    <mainClass>onl.andres.pt.Main</mainClass>
+                    <mainClass>onl.andres.pt.core.Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>

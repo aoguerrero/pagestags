@@ -4,12 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import io.netty.handler.codec.http.HttpRequest;
+import onl.andres.mvcly.core.AppCtx;
 import onl.andres.mvcly.ctrl.TemplateController;
 
 public class LoginTemplateCtrl extends TemplateController {
 
-	public LoginTemplateCtrl(String path, Map<String, byte[]> templatesMap) {
-		super(path, templatesMap);
+	public LoginTemplateCtrl(String path, AppCtx ctx) {
+		super(path, ctx);
 	}
 
 	public Map<String, Object> getContext(HttpRequest request) {

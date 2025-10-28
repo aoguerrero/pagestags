@@ -1,6 +1,6 @@
 package onl.andres.pt.ctrl;
 
-import static onl.andres.pt.AppParameters.PAGES_PATH;
+import static onl.andres.pt.core.AppParameters.PAGES_PATH;
 
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
@@ -11,6 +11,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import onl.andres.mvcly.core.AppCtx;
 import org.commonmark.Extension;
 import org.commonmark.ext.autolink.AutolinkExtension;
 import org.commonmark.ext.gfm.tables.TablesExtension;
@@ -26,11 +27,11 @@ import onl.andres.pt.auth.AuthValidator;
 
 public class PageViewTemplateCtrl extends TemplateController {
 
-	private HtmlRenderer renderer;
-	private Parser parser;
+	private final HtmlRenderer renderer;
+	private final Parser parser;
 
-	public PageViewTemplateCtrl(String path, Map<String, byte[]> templatesMap) {
-		super(path, templatesMap);
+	public PageViewTemplateCtrl(String path, AppCtx ctx) {
+		super(path, ctx);
 		Set<Extension> extensions = Set.of(AutolinkExtension.create(), TablesExtension.create(),
 				ImageAttributesExtension.create());
 		this.parser = Parser.builder().extensions(extensions).build();

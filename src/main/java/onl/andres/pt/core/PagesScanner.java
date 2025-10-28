@@ -1,6 +1,6 @@
-package onl.andres.pt.db;
+package onl.andres.pt.core;
 
-import static onl.andres.pt.AppParameters.PAGES_PATH;
+import static onl.andres.pt.core.AppParameters.PAGES_PATH;
 
 import java.io.BufferedReader;
 import java.nio.file.Files;
@@ -20,11 +20,9 @@ public class PagesScanner {
 
 	public static List<Page> scanPages() {
 		Path pagesPath = Path.of(PAGES_PATH.get()).toAbsolutePath();
-
 		try (Stream<Path> filePathList = Files.list(pagesPath)) {
 			return filePathList.filter(p -> Files.isRegularFile(p, LinkOption.NOFOLLOW_LINKS))
 					.map(PagesScanner::getContent).toList();
-
 		} catch (Exception e) {
 			throw new ServiceException.InternalServer(e);
 		}
@@ -41,5 +39,4 @@ public class PagesScanner {
 			throw new ServiceException.InternalServer(e);
 		}
 	}
-
 }

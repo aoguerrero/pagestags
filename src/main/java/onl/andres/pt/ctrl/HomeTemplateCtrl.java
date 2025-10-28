@@ -1,16 +1,11 @@
 package onl.andres.pt.ctrl;
 
-import static onl.andres.pt.AppParameters.PAGES_PATH;
-
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import io.netty.handler.codec.http.HttpRequest;
+import onl.andres.mvcly.ctrl.TemplateController;
+import onl.andres.mvcly.utl.FileSystemUtils;
+import onl.andres.pt.core.AppParameters;
+import onl.andres.pt.core.PagesTagsCtx;
+import onl.andres.pt.auth.AuthValidator;
 import org.commonmark.Extension;
 import org.commonmark.ext.autolink.AutolinkExtension;
 import org.commonmark.ext.gfm.tables.TablesExtension;
@@ -18,29 +13,26 @@ import org.commonmark.ext.image.attributes.ImageAttributesExtension;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
 
-import io.netty.handler.codec.http.HttpRequest;
-import onl.andres.mvcly.ctrl.TemplateController;
-import onl.andres.mvcly.utl.FileSystemUtils;
-import onl.andres.pt.AppParameters;
-import onl.andres.pt.auth.AuthValidator;
-import onl.andres.pt.db.PagesCache;
-import onl.andres.pt.db.PagesRepository;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
+
+import static onl.andres.pt.core.AppParameters.PAGES_PATH;
 
 public class HomeTemplateCtrl extends TemplateController {
 
-	private PagesCache pagesCache;
+	private final HtmlRenderer renderer;
+	private final Parser parser;
+    private final PagesTagsCtx ctx;
 
-	private HtmlRenderer renderer;
-	private Parser parser;
-
-	public HomeTemplateCtrl(String path, Map<String, byte[]> templatesMap, PagesCache pagesCache) {
-		super(path, templatesMap);
+	public HomeTemplateCtrl(String path, PagesTagsCtx ctx) {
+		super(path, ctx);
 		Set<Extension> extensions = Set.of(AutolinkExtension.create(), TablesExtension.create(),
 				ImageAttributesExtension.create());
 		this.parser = Parser.builder().extensions(extensions).build();
 		this.renderer = HtmlRenderer.builder().build();
-
-		this.pagesCache = pagesCache;
+        this.ctx = ctx;
 	}
 
 	public Map<String, Object> getContext(HttpRequest request) {
@@ -51,8 +43,7 @@ public class HomeTemplateCtrl extends TemplateController {
 			content.append(lines[i]).append("\n");
 		}
 		boolean auth = AuthValidator.isAuthenticated(request);
-		PagesRepository pagesRepo = new PagesRepository(pagesCache);
-		List<String> allTags = new ArrayList<>(pagesRepo.getTags(auth));
+		List<String> allTags = new ArrayList<>(ctx.getTags(auth));
 
 		Map<String, Object> data = new HashMap<>();
 		data.put("page_title", AppParameters.WEBSITE.get());

@@ -1,8 +1,8 @@
 package onl.andres.pt.ctrl;
 
-import static onl.andres.pt.AppParameters.USERNAME;
-import static onl.andres.pt.AppParameters.PASSWORD;
-import static onl.andres.pt.AppParameters.SESSION_ID;
+import static onl.andres.pt.core.AppParameters.USERNAME;
+import static onl.andres.pt.core.AppParameters.PASSWORD;
+import static onl.andres.pt.core.AppParameters.SESSION_ID;
 
 import java.util.Map;
 import java.util.Optional;

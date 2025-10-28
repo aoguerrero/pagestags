@@ -1,4 +1,4 @@
-package onl.andres.pt;
+package onl.andres.pt.core;
 
 public enum AppParameters {
 
